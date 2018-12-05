@@ -1,0 +1,106 @@
+<app-cabecera-formularios></app-cabecera-formularios>
+iiiep
+<h2>Form control para nombre</h2>
+<p></p>
+<button type="button" (click)="showSimpleControlValues()">Mostrar/Ocultar</button>
+<div class="row">
+    <div [hidden]="visible">
+    {{simple | json}}
+    <br>
+    <label>
+        Name: 
+        <input type="text" [formControl]="simple">
+      </label>
+  </div>
+    
+</div>
+<h2>Formulario Reactivo Form Group para formulario completo</h2>
+<div class="container">
+<div class="row justify-content-md-center" >
+  <!-- Importante desactivar las validaciones en html5-->
+  <p>{{formulario.value | json}}</p><br>
+  <p>{{formulario.status | json}}</p>
+  <form [formGroup]="formulario" (ngSubmit)="sumitar()" novalidate>
+      <button class="btn btn-success" (click)="cargarFormulario()">Repoblar Formulario</button>
+      <div class="form-row justify-content-md-center">
+      <div class="form-group">
+          <label for="nombre"> Nombre:</label>
+         
+          <input type="text" formControlName="nombre" class="form-control" name="nombre">
+          <small *ngIf="formulario.controls.nombre.invalid" class="text-danger">Errores de validacion minimi 2 caracteres maximo 50</small>
+          <small *ngIf="formulario.controls.nombre.valid" class="text-success">Correcto</small>
+        
+      </div>
+      
+      <div class="form-group">
+          
+          <label for="precio">Precio</label>
+          <input type="text" formControlName="precio" class="form-control" name="precio">
+          <small *ngIf="formulario.controls.precio.invalid " class="text-danger">Errores de validacion minimi 2 caracteres maximo 50</small>
+          <small *ngIf="formulario.controls.precio.valid" class="text-success">Correcto</small>
+        
+      </div>
+      
+      <div class="form-group">    
+          <label for="precio">calorias</label>
+          <input type="text" formControlName="calorias" class="form-control" name="calorias">
+          <small *ngIf="formulario.controls.calorias.invalid " class="text-danger">Errores de validacion minimi 2 caracteres maximo 50</small>
+          <small *ngIf="formulario.controls.calorias.valid" class="text-success">Correcto</small>       
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">    
+          <label for="colores">colores</label>
+          <input type="color" formControlName="colores" class="form-control" name="colores">
+         <small  class="text-danger">Errores colores</small>       
+      </div>
+      <div class="form-group">    
+          <label for="oferta">Oferta</label>
+          <input type="text" formControlName="oferta" class="form-control" name="oferta">
+         <small  class="text-danger">Errores oferta</small>       
+      </div>
+      <div class="form-group">    
+          <label for="descuento">Descuento</label>
+          <input type="text" formControlName="descuento" class="form-control" name="descuento">
+         <small  class="text-danger">Errores oferta</small>       
+      </div>
+      <div class="form-group">    
+          <label for="imagen">Imagen</label>
+          <input type="text" formControlName="imagen" class="form-control" name="imagen">
+         <small  class="text-danger">Errores oferta</small>       
+      </div>
+      </div>
+      
+      <input type="submit" class="btn btn-info" value="crear" [disabled]="formulario.status === 'INVALID'">
+      
+
+  </form>
+</div>
+</div>
+<hr>
+<button type="button" (click)="showSimpleFormControlValues()">Mostrar/Ocultar</button>
+
+<table style="width: 100%;" [hidden]="visibleForm">
+  <thead>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Precio</th>
+    <th>Calorias</th>
+    <th>Colores</th>
+    <th>Oferta</th>
+    <th>Descuento</th>
+    <th>imagen</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let f of frutas">
+      <td>{{f.id}}</td>
+      <td>{{f.nombre}}</td>
+      <td>{{f.precio}}</td>
+      <td>{{f.calorias}}</td>
+      <td>{{f.colores}}</td> 
+      <td>{{f.oferta}}</td> 
+      <td>{{f.descuento}}</td> 
+      <td><img src="{{f.imagen}}"/></td> 
+    </tr>
+  </tbody>
+</table>

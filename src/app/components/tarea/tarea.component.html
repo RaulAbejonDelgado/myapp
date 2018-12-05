@@ -1,0 +1,19 @@
+<app-cabecera-servicios></app-cabecera-servicios>
+<h2>Operaciones Rest</h2>
+<p>
+ Ejemplo de 2 peticiones get a distintas uris atraves de un service.
+ en el modelo se hace la inyeccion del servicio y se invoca al metodo del servicio que a su vez hacemos un . subscribe 
+</p>
+<p>En el servicio se hace la peticion http.get devolviendo un objeto del tipo Observable, el modelo puede procesar los datos en el .subscribe</p>
+
+<ul class="list-group">
+  <h3>Listado de tareas</h3>
+  <li *ngFor="let t of tarea">{{t | json}}</li>
+
+</ul>
+
+<ul class="list-group">
+    <h3>Listado de Juegos</h3>
+    <li *ngFor="let j of juegos">{{j | json}}</li>
+  
+  </ul>

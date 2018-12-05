@@ -1,0 +1,42 @@
+<app-cabecera-crud></app-cabecera-crud>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+        <button type="button" class="btn btn-outline-success" (click)="mostrarTodos(true)">Todos</button>
+    </div>
+    <div class="col-4">
+        <button type="button" class="btn btn-outline-danger" (click)="mostrarTodos(false)">Pendiente</button>
+      </div>
+      <div class="col-4">
+        <form type="post">
+          <input type="text" name="nuevaTarea" id="nuevaTarea" [(ngModel)]="nueva" ><!---->
+          <button (click)="nuevaTarea()" class="btn btn-success" style="width: 110px;" type="button">Nueva Tarea</button>
+        </form>
+        </div>
+  </div>
+  
+  
+  <table >
+    <thead>
+        <th>¿ Terminado ?</th>
+        <th>Tarea</th>
+        <th>Eliminar</th>
+    </thead>
+    <tbody *ngIf="mostrarTodasTareas">        
+          <tr *ngFor="let tarea of tareas ">
+            <td><input type="checkbox" checked="{{tarea.terminado == true ? 'checked':''}}"></td>
+            <td>{{tarea.titulo }}</td>
+            <td><i class="fas fa-trash-alt text-danger" (click)="eliminar(tarea.id)"></i></td>
+          </tr>
+    </tbody>
+    <tbody *ngIf="!(mostrarTodasTareas)">  
+          solo pendientes
+        <tr *ngFor="let tarea of tareas | tareaTerminado:false">
+          <td><input type="checkbox" ></td>
+          <td>{{tarea.titulo }}</td>
+          <td><i class="fas fa-trash-alt text-danger" (click)="eliminar(tarea.id)"></i></td>
+        </tr>
+  </tbody>
+  </table>
+
+</div>

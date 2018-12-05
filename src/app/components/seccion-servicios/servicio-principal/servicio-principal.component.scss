@@ -1,0 +1,14 @@
+blockquote {
+    background: grey;
+
+}
+blockquote > p {
+    color:#eeeeee;
+    text-shadow: -0px -1px #cccccc;
+    padding: 10px;
+}
+
+blockquote > a {
+    text-decoration: none;
+    color: black;
+}

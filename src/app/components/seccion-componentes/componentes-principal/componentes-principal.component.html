@@ -1,0 +1,30 @@
+<app-cabecera-componentes></app-cabecera-componentes>
+<h2>Los componentes en Angular !!</h2>
+<p>En	Angular	se	desarrolla	en	base	a	componentes. Los componentes son una vista con su logica 
+  asociada a una etiqueta que puede ser instanciada desde otros componentes o desde el sistema de rutas. </p>
+
+  <div class="explicacion">
+      <h3>Crear un componente</h3>
+      <p><code>comando a usar : ng generate component/nombre-componente</code></p>
+      <ul>
+        <li><small>Forma abreviada de declarar un componente : ng g c component/nombre-componente</small></li>
+        <li><small>Los componentes a usar deben ser declarados en <b>app.modulo.ts</b></small></li>
+        <li><small>Si quieres reusar el componente en otro componente debes usar el 'selector' del componente en la vista mediante una etiqueta  </small></li>
+        <li><small>Declararlo en el app.routing.module.ts para activarlo en el sistema de rutas  </small></li>
+      </ul>
+      <h4>Archivos resultantes tras la ejecucion del comando:</h4>
+      <p><b>nombre-componente.componente.html :</b>La vista del componente, donde puede ser una maquetacion estatica,
+      o sacar datos de forma dinamica . </p>
+      <p><b>nombre-componente.component.ts :</b>El controlador La logica del componente , las datos instaciados aqui
+      tras declararlos e inicializarlos pueden ser accedidos desde la vista.</p>
+      <p><b>nombre-componente.component.scss :</b>Donde se declaran los estilos, que se aplicaran en la vista.
+        <small>Al crear el proyecto en la version actual de angular cli, te pregunta sobre que tipo de estilos
+          quieres usar, dependiendo la eleccion en este punto podemos encontrarnos con diferentes extensiones como css.. etc.
+        </small>
+      </p>
+      <p><b>nombre-componente.component.spec.ts :</b>No tocar xD.</p>
+      
+      
+       
+  </div>
+

@@ -1,0 +1,79 @@
+<app-cabecera-componentes></app-cabecera-componentes>
+<h2>Reutilizando componentes</h2>
+
+<p>Reutilizacion del componente card usando la clase Fruta</p>
+<p>En cada iteracion pintamos la etiqueta app-card-fruta y a su vez le pasamos el objeto sobre el que iteramos para que termine de pintar la tarjeta. Esto es posible porque 
+  en el componente que estamos reutilizando(app-card-fruta) se ha declarado un parametro de entrada @input</p>
+ 
+
+
+<div class="row iteracion-tarjetas justify-content-around">
+  <div *ngFor="let f of fruits" class="col-3">
+      <app-card [_objeto]="f"></app-card>
+  </div>
+</div>
+
+<hr>
+<p>En este ejemplo reutilizamos el componente app-card-videojuegos, donde se pinta por
+defecto con los valores que adquiere en el contructor de la clase al instanciarse.
+Tambien pintamos por pantalla el listado de juegos iterando atraves de un array de videojuegos que se pinta en una lista.</p>
+<p>Al pulsar sobre algun elemento de la lista, activamos la funcion mostrarJuegos que recoge el objeto clickado como parametro,
+   este setea una variable del tipo videojuego que la coje la etiqueta app-card-videojuego [_juego]="juegoSelecionado" y se termina de pintar la tarjeta.  </p>
+<div class="row justify-content-md-center">
+  <div class="col-3">
+    <h3>Listado de videojuegos</h3>
+    <ol>
+        <li *ngFor="let j of videojuegoArray" (click) = "mostrarJuegos(j)">{{j.titulo }}</li>
+    </ol>
+  </div>
+  <div class="col-5">
+        <app-videojuego-card [_juego]="juegoSelecionado"></app-videojuego-card>
+  </div>
+
+</div>
+
+<p>Registrar eventos @Output</p>
+<p>El componente padre puede recivir eventos del componente hijo, donde activamos</p>
+<div class="row">
+    <div class="col-2 bg-light">
+        Elemento del componente padre le pasa el objeto a pintar en el componente hijo:
+        <ul class="list-group">
+            <li *ngFor="let j of videojuegoArray" 
+                (click)="mostrarJuegos2(j)" 
+                class="list-group-item" 
+                [class.active]="j == jSelecionado1 || j == jSelecionado2">{{j.titulo}}</li>          
+        </ul>
+    </div>   
+    <div class="col-7">
+      Elemento hijo instaciado en el elemento padre, este tiene un boton que tiene una
+       logica que viene del elemento hijo, donde atraves del elemento @output y la clase
+        EventEmiter desde el metodo comprar del elemento hijo podemos redirecionar a 
+        algun metodo del elemento padre que en este caso es actualizarCarrito:
+        Este ultimo metodo se encarga de actualizar y simular el comportamiento de un carro virtual
+      <div class="row">
+          <div class="col-6"><app-videojuego-card [_juego]="jSelecionado1" [_juego2]="jSelecionado2" (clickCompra)="actualizarCarrito($event)"></app-videojuego-card></div>
+         <div class="col-6"><app-videojuego-card [_juego]="jSelecionado2" [_juego2]="jSelecionado1" (clickCompra)="actualizarCarrito($event)"></app-videojuego-card></div>
+         
+       </div> 
+    </div>
+
+    <div class="col-2">
+        <p>Elemento del componente padre</p>
+      <b >Carrito:</b>
+       <!-- <app-card [objeto]></app-card> -->
+ <div class="card" style="width: 17rem;">
+
+  <div class="card-body">
+    <h5 class="card-title"> Total :{{totalPrecioJuegosClickados}}</h5>
+    
+    <p>Juego </p>
+    <p *ngFor="let j of carrito">Juego:{{j.titulo}} <br> Precio total : {{j.total}} <br> <button (click)="restarUno(j)">-</button> Total Selecionados : {{j.cantidad}}<button (click)="sumarUno(j)">+</button> </p>
+    <button (click)="comprar()" class="btn btn-block btn-outline-primary">Comprar</button>
+  </div>
+  
+</div>
+    </div>
+
+
+  
+  </div>

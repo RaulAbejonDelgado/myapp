@@ -1,0 +1,14 @@
+<h2>Componentes y clases</h2>
+<p>Se ha generado un segundo componente llamado alumnos con la misma extructura de archivos. </p>
+<p>Se ha generado una clase persona con el comando <code>ng generate class model/personas</code></p>
+<p>En esta clase definimos los atributos con sus getters y setters, pudiendo definir un construrctor</p>
+<p>Desde el ts instaciamos la clase Persona y vamos metiendo en un array de Personas las personas que creamos, mediande una funcion que ejecutamos en el constructor del ts</p>
+<p>Para interar y pintar el obejto iterador usamos el <b>pipe</b>  | json </p>
+<p>Tambien es posible acceder a las propiedades del objeto iterador con la notacion '.' ejemplo -> a.nombre</p>
+
+<ol>
+  <li *ngFor="let a of alumnos">{{a | json}}</li>
+</ol> 
+
+
+

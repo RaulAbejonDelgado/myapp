@@ -1,0 +1,11 @@
+ <!-- <app-card [objeto]></app-card> -->
+ <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"> {{juego.titulo }}</h5>
+      <p class="card-text">Precio : {{juego.precio}} €</p>
+      <p class="card-text">Alquilado = {{juego.alquilado}}</p>
+      <p class="card-text">Descripcion = {{juego._descripcion}}</p>
+      <button (click)="comprar()" class="btn btn-block btn-outline-primary">Comprar</button>
+    </div>
+  </div>

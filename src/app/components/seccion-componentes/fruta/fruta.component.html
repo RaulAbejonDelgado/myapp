@@ -1,0 +1,65 @@
+<app-cabecera-componentes></app-cabecera-componentes>
+<h2>Primer componente(fruta) </h2>
+<h3>Pintando datos declarados en <b>fruta.component.ts</b></h3>
+<div class="row ">
+
+  <div class="col-8 ">
+        <p>Creamos un componente llamado fruta</p>
+        <p>*- En el ts se declara el array " frutas : string[]; "</p>
+        <p>*- Se inicializa en el constructor " this.frutas = ['fresa','platano','mango','kiwi'];"</p>
+        <p>*- Ahora en la vista <b>frutas.component.html</b> podemos iterar sobre el array frutas de la siguiente manera:<br></p>
+        <p>Usamos la directiva en una lista sobre el elemento li como si se tratase de un atributo html <code>*ngFor="let f of frutas"</code>
+         
+              <p> <b>Resultado de la iteracion del array </b></p>
+              <ol>
+                <li *ngFor="let f of frutas">{{f}}</li>
+              </ol>
+  </div>
+</div>
+<hr>
+
+
+<hr>
+<div class="container">
+    <h3>MAP, FIND, FILTER, REDUCE</h3>
+  <div class="row">
+    
+    <div class="col-3">
+
+      
+      <p>Nombre las frutas :</p>
+      <ol>
+        <li *ngFor="let fn of nombresArray">{{fn }} </li>
+      </ol>
+      <p>Precio total de todas las frutas :<b> {{precioTotal}}</b></p>
+
+    </div>
+    <div class="col-3">
+
+      <p>Frutas en oferta :</p>
+      <ol>
+        <li *ngFor="let fo of frutasOferta">{{fo.nombre }}</li>
+      </ol>
+
+    </div>
+    <div class="col-3">
+
+      <p>Frutas de color rojo :</p>
+      <ol>
+        <li *ngFor="let fo of frutasOferta">{{fo.nombre }}</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p>cosnegir primera fruta de oferta : {{primeraFrutaOferta.nombre}}</p>
+
+    </div>
+    <div class="col">
+      <p>cosnegir primera fruta de oferta : {{primeraFrutaOfertaVerde.nombre}}</p>
+
+    </div>
+
+  </div>
