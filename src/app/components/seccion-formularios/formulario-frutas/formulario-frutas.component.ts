@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Frutas } from 'src/app/model/frutas';
 import { FrutaService } from 'src/app/providers/fruta.service';
 
@@ -9,11 +9,13 @@ import { FrutaService } from 'src/app/providers/fruta.service';
   styleUrls: ['./formulario-frutas.component.scss']
 })
 export class FormularioFrutasComponent implements OnInit {
+ 
   simple: FormControl;//nombre de un input de un formulario
   formulario : FormGroup; // Esto nos permite cojer la totalidad de los inputs de un formulario
   frutas : Frutas[];
   visible : boolean;
   visibleForm : boolean;
+  colores: FormArray;
 
   constructor(public frutaService : FrutaService) { 
     console.trace("FormulariooComponent -constructor ");
@@ -44,10 +46,10 @@ export class FormularioFrutasComponent implements OnInit {
                                     Validators.required,
                                     Validators.minLength(0)
                                 ]),
-    colores : new FormControl(''),
+    colores: new FormArray( [this.crearColorFormGroup() ], Validators.minLength(1) ),//this.crearColorFormGroup(), quito para que inicialmente solo aparezca un campo color al inicializarse
     oferta : new FormControl(false),
     descuento : new FormControl(0),
-    imagen : new FormControl(''),
+    imagen: new FormControl('https://picsum.photos/300/300/?random', [ Validators.required, Validators.pattern('^(http(s?):\/\/).+(\.(png|jpg|jpeg))$')]),
     })
     this.recargarLista();
   }
@@ -92,5 +94,23 @@ export class FormularioFrutasComponent implements OnInit {
   }
   showSimpleFormControlValues(){
     this.visibleForm = !this.visibleForm;
+  }
+
+  nuevoColor(){
+    let arrayColores = this.formulario.get('colores') as FormArray;
+    arrayColores.push(this.crearColorFormGroup());
+  }
+
+  eliminarColor( index: number){
+    let arrayColores = this.formulario.get('colores') as FormArray;
+    if ( arrayColores.length > 1 ){
+      arrayColores.removeAt(index);
+    }  
+  }
+
+  crearColorFormGroup(): FormGroup{
+    return new FormGroup({
+                color: new FormControl('verde', [ Validators.required, Validators.minLength(2), Validators.minLength(15)])
+        });
   }
 }

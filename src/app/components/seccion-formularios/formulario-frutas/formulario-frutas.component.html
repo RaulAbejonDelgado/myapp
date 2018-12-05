@@ -51,8 +51,18 @@ iiiep
     <div class="form-row">
       <div class="form-group">    
           <label for="colores">colores</label>
-          <input type="color" formControlName="colores" class="form-control" name="colores">
-         <small  class="text-danger">Errores colores</small>       
+          <button (click)="nuevoColor()">Nuevo</button>
+         <input type="color" formControlName="colores" class="form-control" name="colores">
+          <!-- <small  class="text-danger">Errores colores</small>        -->
+         <div formArrayName="colores">
+            <div *ngFor="let color of formulario.get('colores').controls; let i = index;">                                       
+                <div [formGroupName]="i">
+                    <input formControlName="color" >
+                    <button (click)="eliminarColor(i)">Eliminar</button>
+                   <!-- <small *ngIf="formulario.get('colores').controls[i].invalid" class="form-text text-danger">Minimo 2 letras maximo 15</small> -->
+                </div>                   
+            </div>
+        </div>
       </div>
       <div class="form-group">    
           <label for="oferta">Oferta</label>
