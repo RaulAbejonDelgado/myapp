@@ -1,25 +1,7 @@
-<app-cabecera-formularios></app-cabecera-formularios>
-iiiep
-<h2>Form control para nombre</h2>
-<p></p>
-<button type="button" (click)="showSimpleControlValues()">Mostrar/Ocultar</button>
-<div class="row">
-    <div [hidden]="visible">
-    {{simple | json}}
-    <br>
-    <label>
-        Name: 
-        <input type="text" [formControl]="simple">
-      </label>
-  </div>
-    
-</div>
-<h2>Formulario Reactivo Form Group para formulario completo</h2>
-<div class="container">
+<app-cabecera-crud></app-cabecera-crud>
+
 <div class="row justify-content-md-center" >
   <!-- Importante desactivar las validaciones en html5-->
-  <p>{{formulario.value | json}}</p><br>
-  <p>{{formulario.status | json}}</p>
   <form [formGroup]="formulario" (ngSubmit)="sumitar()" novalidate>
       <button class="btn btn-success" (click)="cargarFormulario()">Repoblar Formulario</button>
       <div class="form-row justify-content-md-center">
@@ -51,7 +33,7 @@ iiiep
     <div class="form-row">
       <div class="form-group">    
           <label for="colores">colores</label>
-          <button (click)="nuevoColor()">Nuevo</button>
+          <a  class="btn btn-success" (click)="nuevoColor()">Nuevo</a>
          <input type="color" formControlName="colores" class="form-control" name="colores">
           <!-- <small  class="text-danger">Errores colores</small>        -->
          <div formArrayName="colores">
@@ -86,33 +68,35 @@ iiiep
 
   </form>
 </div>
-</div>
-<hr>
 <button type="button" (click)="showSimpleFormControlValues()">Mostrar/Ocultar</button>
+<div [hidden]="!frutaDetalle">
+    <app-card [_objeto]="frutaDetalle"></app-card>
+</div>
 
 <table style="width: 100%;" [hidden]="visibleForm">
-  <thead>
-    <th>Id</th>
-    <th>Nombre</th>
-    <th>Precio</th>
-    <th>Calorias</th>
-    <th>Colores</th>
-    <th>Oferta</th>
-    <th>Descuento</th>
-    <th>imagen</th>
-    
-  </thead>
-  <tbody>
-    <tr *ngFor="let f of frutas">
-      <td>{{f.id}}</td>
-      <td>{{f.nombre}}</td>
-      <td>{{f.precio}}</td>
-      <td>{{f.calorias}}</td>
-      <td><p >{{f.colores | json }}</p></td> 
-      <td>{{f.oferta}}</td> 
-      <td>{{f.descuento}}</td> 
-      <td><img src="{{f.imagen}}"/></td> 
-      
-    </tr>
-  </tbody>
-</table>
+    <thead>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Calorias</th>
+      <th>Colores</th>
+      <th>Oferta</th>
+      <th>Descuento</th>
+      <th>imagen</th>
+      <th>Operaciones</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let f of frutas">
+        <td>{{f.id}}</td>
+        <td>{{f.nombre}}</td>
+        <td>{{f.precio}}</td>
+        <td>{{f.calorias}}</td>
+        <td><p >{{f.colores | json }}</p></td> 
+        <td>{{f.oferta}}</td> 
+        <td>{{f.descuento}}</td> 
+        <td><img src="{{f.imagen}}"/></td> 
+        <td><i class="fas fa-trash-alt text-danger" (click)="eliminar(f.id)"></i> <i class="fas fa-edit" (click)="mostrarFruta(f)" ></i> <i class="fas fa-edit fa-3x" [routerLink]="['../detalle-fruta', f.id ]" ></i></td><!--[routerLink]="['detalle-fruta/:id', f.id ]"-->
+      </tr>
+    </tbody>
+  </table>
+  

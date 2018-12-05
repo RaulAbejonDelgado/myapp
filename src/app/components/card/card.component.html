@@ -1,5 +1,6 @@
 <div class="card" style="width: 18rem;">
     <div class="card-head">
+      <input type="number" formControlName="id" value="{{objeto.id}}" >
       
       <img class="card-img-top" src="{{objeto.imagen}}" alt="Card image cap">
       
@@ -14,4 +15,59 @@
 
       <button (click)="comprar(event)" class="btn btn-primary">Comprar</button>
     </div>
+  </div>
+
+  <div class="row justify-content-md-center" >
+    <!-- Importante desactivar las validaciones en html5-->
+    <form [formGroup]="formulario" (ngSubmit)="sumitar()" novalidate>
+        <button class="btn btn-success" (click)="cargarFormulario()">Repoblar Formulario</button>
+        <div class="form-row justify-content-md-center">
+        <div class="form-group">
+            <label for="nombre"> Nombre:</label>
+           
+            <input type="text" value="{{objeto.nombre}}" formControlName="nombre" class="form-control" name="nombre">
+            <!-- <small *ngIf="formulario.controls.nombre.invalid" class="text-danger">Errores de validacion minimi 2 caracteres maximo 50</small>
+            <small *ngIf="formulario.controls.nombre.valid" class="text-success">Correcto</small> -->
+          
+        </div>
+        
+        <div class="form-group">
+            
+            <label for="precio">Precio</label>
+            <input type="text"  value="{{objeto.precio}}" formControlName="precio" class="form-control" name="precio">
+            <!-- <small *ngIf="formulario.controls.precio.invalid " class="text-danger">Errores de validacion minimi 2 caracteres maximo 50</small>
+            <small *ngIf="formulario.controls.precio.valid" class="text-success">Correcto</small> -->
+          
+        </div>
+        
+        <div class="form-group">    
+            <label for="precio">calorias</label>
+            <input type="text" value="{{objeto.calorias}}" formControlName="calorias" class="form-control" name="calorias">
+            <!-- <small *ngIf="formulario.controls.calorias.invalid " class="text-danger">Errores de validacion minimi 2 caracteres maximo 50</small>
+            <small *ngIf="formulario.controls.calorias.valid" class="text-success">Correcto</small>        -->
+        </div>
+      </div>
+      <div class="form-row">
+        
+        <div class="form-group">    
+            <label for="oferta">Oferta</label>
+            <input type="text" value="{{objeto.oferta}}" formControlName="oferta" class="form-control" name="oferta">
+           <small  class="text-danger">Errores oferta</small>       
+        </div>
+        <div class="form-group">    
+            <label for="descuento">Descuento</label>
+            <input type="text" value="{{objeto.descuento}}" formControlName="descuento" class="form-control" name="descuento">
+           <small  class="text-danger">Errores oferta</small>       
+        </div>
+        <div class="form-group">    
+            <label for="imagen">Imagen</label>
+            <input type="text" value="{{objeto.imagen}}" formControlName="imagen" class="form-control" name="imagen">
+           <small  class="text-danger">Errores oferta</small>       
+        </div>
+        </div>
+        
+        <input type="submit" class="btn btn-info" value="crear" >
+        
+  
+    </form>
   </div>

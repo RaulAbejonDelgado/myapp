@@ -8,18 +8,18 @@ import { Frutas } from '../model/frutas';
 })
 export class FrutaService {
 
+
   endpoint : string ='http://localhost:3000/frutas' ;
 
   constructor(public http : HttpClient) { }
 
   getAll(): Observable <any>{
-    console.trace('TareaService - getAll');
-    console.log(this.http.get(this.endpoint));
+    console.trace('FrutaService - getAll');
     return this.http.get(this.endpoint);
   }
 
   add(fruta: Frutas): Observable<any>{
-    console.trace(`TareaService add ${this.endpoint}`);
+    console.trace(`FrutaService add ${this.endpoint}`);
     let body  = {
           //"id": tarea.id,
           "nombre": fruta.nombre,
@@ -38,5 +38,37 @@ export class FrutaService {
     return this.http.post( this.endpoint, body , httpOptions );
 }
 
+delete(id: number): Observable <any>{
+  let uri = this.endpoint + "/"+id;
+  console.trace("FrutaService - delete->" + uri);
+  return this.http.delete(this.endpoint + "/"+id);
+}
 
+obtenerFrutaPorId(id: number): any {
+  return this.http.get(this.endpoint+"/"+id);
+}
+
+actualizar(fruta: Frutas): Observable<any>{
+  console.trace(`FrutaService add ${this.endpoint}`);
+  console.log(fruta.id);
+  let body  = {
+
+        "nombre": fruta.nombre,
+        "precio": fruta.precio,
+        "calorias": fruta.calorias, 
+        "colores" : fruta.colores,
+        "oferta": fruta.oferta,
+        "descuento": fruta.descuento,
+        "imagen" : fruta.imagen
+        
+      };  
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
+  return this.http.put( this.endpoint+"/"+fruta.id, body , httpOptions );
+
+
+}
 }

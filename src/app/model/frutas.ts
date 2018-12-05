@@ -8,7 +8,8 @@ export enum Colores {
 
 export class Frutas {
 
-    private _id:number;
+     private _id: number;
+   
 
     private _nombre: string;
    
@@ -27,7 +28,12 @@ export class Frutas {
     
 
 
-
+    public get id(): number {
+        return this._id;
+    }
+    public set id(value: number) {
+        this._id = value;
+    }
     public get colores(): string[] {
         return this._colores;
     }
