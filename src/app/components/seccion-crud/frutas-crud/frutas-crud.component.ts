@@ -15,57 +15,43 @@ export class FrutasCrudComponent implements OnInit {
   visible : boolean;
   visibleForm : boolean;
   colores: FormArray;
+  color : FormControl;
   frutaDetalle : Frutas;
+  formularioNuevo : boolean;
 
   constructor(public frutaService : FrutaService) { 
     console.trace("FormulariooComponent -constructor ");
+    this.formularioNuevo = true;
     this.frutas = [];
     this.visible = true;
-    this.visibleForm = true; 
+    this.visibleForm = false; 
+    this.color= new FormControl();
     //Controle unico
     this.simple = new FormControl();
     this.simple.setValue("fresa");//para setear valores por defecto en un formulario
     //agrupacion de inputs de un formulario
     this.formulario = new FormGroup({
-      nombre : new FormControl('',
-                              [
-                                Validators.required,
-                                Validators.minLength(2),
-                                Validators.maxLength(50)
-                              ]),
-      precio : new FormControl('0',//valor inicial
-                              //validaciones
-                                [ 
-                                    Validators.required,
-                                    Validators.minLength(0),
-                                    Validators.maxLength(5)
-
-                                ]),
-    calorias : new FormControl(0,
-                                [
-                                    Validators.required,
-                                    Validators.minLength(0)
-                                ]),
-    colores: new FormArray( [this.crearColorFormGroup(),this.crearColorFormGroup() ], Validators.minLength(1) ),// quito para que inicialmente solo aparezca un campo color al inicializarse
-    oferta : new FormControl(false),
-    descuento : new FormControl(0),
-    imagen: new FormControl('https://picsum.photos/300/300/?random', [ Validators.required, Validators.pattern('^(http(s?):\/\/).+(\.(png|jpg|jpeg))$')]),
-    })
-    this.recargarLista();
+      nombre : new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(45)]),
+      precio : new FormControl(0,[Validators.required,Validators.minLength(1),Validators.maxLength(5)]),
+      calorias : new FormControl(0,[Validators.required,Validators.minLength(0)]),
+      colores: new FormArray( [ this.crearColorFormGroup() ], Validators.minLength(0)),// quito para que inicialmente solo aparezca un campo color al inicializarse, this.crearColorFormGroup(),
+      oferta : new FormControl(false),
+      descuento : new FormControl(0),
+      imagen: new FormControl('https://picsum.photos/300/300/?random', [ Validators.required, Validators.pattern('^(http(s?):\/\/).+(\(.png|.jpg|j.peg|random))$')])})
+      this.recargarLista();
   }
 
   ngOnInit() {
     console.trace("FormulariooComponent -ngOnInit ")
   }
 
-  cargarFormulario(){
-    this.formulario.controls.nombre.setValue('fresa');
-    this.formulario.controls.precio.setValue(2.55);
-    this.formulario.controls.colores.setValue('Rojo');
-    this.formulario.controls.descuento.setValue(10);
-    this.formulario.controls.imagen.setValue('https://static9.depositphotos.com/1642482/1149/i/450/depositphotos_11491656-stock-photo-strawberry.jpg');
-    
-  }
+
+  recargarLista(){
+    this.frutaService.getAll().subscribe(data =>{
+      console.debug('datos recividos %o', data);
+      this.frutas = data.map(el => el)
+    })
+  } 
   sumitar(){
     console.log("FormulariooComponent - sumitar %o",  this.formulario);
     let fruta = new Frutas();
@@ -77,17 +63,36 @@ export class FrutasCrudComponent implements OnInit {
     fruta.imagen = this.formulario.controls.imagen.value;
     this.frutaService.add(fruta).subscribe(data =>{
       console.debug(data);
+      this.recargarLista();
+      this.vaciarFormulario();
     })
-    this.recargarLista();
+    
 
   }
 
-  recargarLista(){
-    this.frutaService.getAll().subscribe(data =>{
-      console.debug('datos recividos %o', data);
-      this.frutas = data.map(el => el)
-    })
+  cargarFormulario(){
+
+    this.formulario.controls.nombre.setValue('fresat');
+    this.formulario.controls.precio.setValue(2.55);
+    this.formulario.controls.colorres[0].setValue('#54a320');
+    this.formulario.controls.descuento.setValue(10);
+    this.formulario.controls.calorias.setValue(0);
+    this.formulario.controls.oferta.setValue(0);
+    //this.formulario.setValue({'status':'VALID'});
   }
+
+  vaciarFormulario(){
+    this.formulario.controls.nombre.setValue('');
+    this.formulario.controls.precio.setValue('');
+    this.formulario.controls.colores.setValue([]);
+    this.formulario.controls.descuento.setValue('');
+    this.formulario.controls.imagen.setValue('');
+    this.formulario.controls.calorias.setValue('');
+    this.formulario.controls.oferta.setValue('');
+  }
+
+
+  
 
   showSimpleControlValues(){
     this.visible = !this.visible;
@@ -101,6 +106,11 @@ export class FrutasCrudComponent implements OnInit {
     arrayColores.push(this.crearColorFormGroup());
   }
 
+  getColores(): FormArray{
+     
+    return this.formulario.get('colores') as FormArray;
+  }
+
   eliminarColor( index: number){
     let arrayColores = this.formulario.get('colores') as FormArray;
     if ( arrayColores.length > 1 ){
@@ -110,7 +120,7 @@ export class FrutasCrudComponent implements OnInit {
 
   crearColorFormGroup(): FormGroup{
     return new FormGroup({
-                color: new FormControl('verde', [ Validators.required, Validators.minLength(2), Validators.minLength(15)])
+                color: new FormControl("#000000", [ Validators.required])
         });
   }
 
@@ -124,5 +134,10 @@ export class FrutasCrudComponent implements OnInit {
 
   mostrarFruta(fruta: Frutas){
     this.frutaDetalle = fruta;
+  }
+
+  mostrarFormulario(){
+    this.formularioNuevo = !this.formularioNuevo;
+
   }
 }

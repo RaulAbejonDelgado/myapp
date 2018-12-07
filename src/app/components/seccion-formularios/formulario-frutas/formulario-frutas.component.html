@@ -6,6 +6,7 @@ iiiep
 <div class="row">
     <div [hidden]="visible">
     {{simple | json}}
+    {{simple.value}}
     <br>
     <label>
         Name: 
@@ -20,7 +21,8 @@ iiiep
   <!-- Importante desactivar las validaciones en html5-->
   <p>{{formulario.value | json}}</p><br>
   <p>{{formulario.status | json}}</p>
-  <form [formGroup]="formulario" (ngSubmit)="sumitar()" novalidate>
+  
+  <form [formGroup]="formulario" (ngSubmit)="sumitar()" >
       <button class="btn btn-success" (click)="cargarFormulario()">Repoblar Formulario</button>
       <div class="form-row justify-content-md-center">
       <div class="form-group">
@@ -66,20 +68,23 @@ iiiep
       </div>
       <div class="form-group">    
           <label for="oferta">Oferta</label>
-          <input type="text" formControlName="oferta" class="form-control" name="oferta">
-         <small  class="text-danger">Errores oferta</small>       
+          <input type="text" class="form-control" name="oferta"> 
+        <small *ngIf="formulario.controls.oferta.invalid " class="text-danger">Errores de validacion en oferta</small>
+          <small *ngIf="formulario.controls.oferta.valid" class="text-success">Correcto</small>             
       </div>
       <div class="form-group">    
           <label for="descuento">Descuento</label>
           <input type="text" formControlName="descuento" class="form-control" name="descuento">
-         <small  class="text-danger">Errores oferta</small>       
+          <small *ngIf="formulario.controls.descuento.invalid " class="text-danger">Errores de validacion en descuento</small>
+          <small *ngIf="formulario.controls.descuento.valid" class="text-success">Correcto</small>                   
       </div>
       <div class="form-group">    
           <label for="imagen">Imagen</label>
           <input type="text" formControlName="imagen" class="form-control" name="imagen">
-         <small  class="text-danger">Errores oferta</small>       
+          <small *ngIf="formulario.controls.imagen.invalid " class="text-danger">Errores de validacion en imagen</small>
+          <small *ngIf="formulario.controls.imagen.valid" class="text-success">Correcto</small>                   
       </div>
-      </div>
+    </div>
       
       <input type="submit" class="btn btn-info" value="crear" [disabled]="formulario.status === 'INVALID'">
       

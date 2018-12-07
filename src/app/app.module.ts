@@ -49,6 +49,7 @@ import { CabeceraFormulariosComponent } from './components/cabeceras/cabecera-fo
 import { CustomPipeComponent } from './components/seccion-pipe/custom-pipe/custom-pipe.component';
 import { AngularPipeComponent } from './components/seccion-pipe/angular-pipe/angular-pipe.component';
 import { FrutasCrudComponent } from './components/seccion-crud/frutas-crud/frutas-crud.component';
+import { FrutasEditableCardComponent } from './components/seccion-crud/frutas-editable-card/frutas-editable-card.component';
 
 
 
@@ -88,7 +89,8 @@ import { FrutasCrudComponent } from './components/seccion-crud/frutas-crud/fruta
     CabeceraFormulariosComponent,
     CustomPipeComponent,
     AngularPipeComponent,
-    FrutasCrudComponent
+    FrutasCrudComponent,
+    FrutasEditableCardComponent
   ],
   imports: [
     BrowserModule,

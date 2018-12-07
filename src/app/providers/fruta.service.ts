@@ -49,10 +49,10 @@ obtenerFrutaPorId(id: number): any {
 }
 
 actualizar(fruta: Frutas): Observable<any>{
-  console.trace(`FrutaService add ${this.endpoint}`);
+  console.trace(`FrutaService actualizar ${this.endpoint}`);
   console.log(fruta.id);
   let body  = {
-
+        "id":fruta.id,
         "nombre": fruta.nombre,
         "precio": fruta.precio,
         "calorias": fruta.calorias, 

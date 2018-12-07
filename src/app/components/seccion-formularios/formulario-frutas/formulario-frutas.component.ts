@@ -46,10 +46,10 @@ export class FormularioFrutasComponent implements OnInit {
                                     Validators.required,
                                     Validators.minLength(0)
                                 ]),
-    colores: new FormArray( [this.crearColorFormGroup() ], Validators.minLength(1) ),//this.crearColorFormGroup(), quito para que inicialmente solo aparezca un campo color al inicializarse
+    colores: new FormArray( [this.crearColorFormGroup()] ),//this.crearColorFormGroup(), quito para que inicialmente solo aparezca un campo color al inicializarse
     oferta : new FormControl(false),
     descuento : new FormControl(0),
-    imagen: new FormControl('https://picsum.photos/300/300/?random', [ Validators.required, Validators.pattern('^(http(s?):\/\/).+(\.(png|jpg|jpeg))$')]),
+    imagen: new FormControl('https://picsum.photos/300/300/?random', [ Validators.required, Validators.pattern('^(http(s?):\/\/).+(\(.png|.jpg|j.peg|random))$')]),
     })
     this.recargarLista();
   }

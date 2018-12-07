@@ -21,6 +21,7 @@ import { CustomPipeComponent } from './components/seccion-pipe/custom-pipe/custo
 import { AngularPipeComponent } from './components/seccion-pipe/angular-pipe/angular-pipe.component';
 import { FrutasCrudComponent } from './components/seccion-crud/frutas-crud/frutas-crud.component';
 import { CardComponent } from './components/card/card.component';
+import { FrutasEditableCardComponent } from './components/seccion-crud/frutas-editable-card/frutas-editable-card.component';
 
 const routes: Routes = [
   
@@ -40,7 +41,8 @@ const routes: Routes = [
   { path: 'tarea-crud', component: TareasCrudComponent },
   { path: 'formulario-frutas', component: FormularioFrutasComponent },
   { path: 'angular-pipes', component: AngularPipeComponent },
-  { path: 'detalle-fruta/:id', component: CardComponent },
+  { path: 'detalle-fruta-editable/:id', component: FrutasEditableCardComponent },
+  { path: 'detalle-fruta', component: CardComponent },
   { path: 'frutas-crud', component: FrutasCrudComponent },
   { path: 'formulario-principal', component: FormulariosPrincipalComponent },
 

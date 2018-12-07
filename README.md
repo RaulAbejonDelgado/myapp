@@ -32,7 +32,7 @@ Manejo de atributos en el modelo -> {{atributoModelo}}
 
 banana in a box [()]
 
-enventos (click)="funcion()"
+Eventos (click)="funcion()"
 
 ##app.module.ts
 
