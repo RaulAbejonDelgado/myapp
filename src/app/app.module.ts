@@ -63,6 +63,18 @@ import { SpotyBuscarComponent } from './components/seccion-servicios/spoty-app-c
 import { SpotyNavbarComponent } from './components/seccion-servicios/spoty-app-components/spoty-comun/spoty-navbar/spoty-navbar.component';
 import { FormularioTemplateComponent } from './components/seccion-formularios/formulario-template/formulario-template.component';
 import { FormularioReactivoComponent } from './components/seccion-formularios/formulario-reactivo/formulario-reactivo.component';
+import { SeccionBackofficeComponent } from './components/seccion-backoffice/seccion-backoffice.component';
+import { LoginComponent } from './components/login/login.component';
+
+
+
+
+//servicios
+import { LoginService } from './providers/login.service';
+
+
+//guards
+import { BackofficeGuard } from './guards/backoffice.guard';
 
 
 
@@ -116,6 +128,8 @@ import { FormularioReactivoComponent } from './components/seccion-formularios/fo
     SpotyNavbarComponent,
     FormularioTemplateComponent,
     FormularioReactivoComponent,
+    SeccionBackofficeComponent,
+    LoginComponent,
 
   ],
   imports: [
@@ -129,7 +143,9 @@ import { FormularioReactivoComponent } from './components/seccion-formularios/fo
   providers: [
     VideojueosService,
     TareaService,
-    SpotyAppService
+    SpotyAppService,
+    LoginService,
+    BackofficeGuard
    
 
   ],

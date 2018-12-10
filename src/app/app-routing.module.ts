@@ -28,6 +28,9 @@ import { SpotyBuscarComponent } from './components/seccion-servicios/spoty-app-c
 import { SpotyInicioComponent } from './components/seccion-servicios/spoty-app-components/spoty-inicio/spoty-inicio.component';
 import { FormularioReactivoComponent } from './components/seccion-formularios/formulario-reactivo/formulario-reactivo.component';
 import { FormularioTemplateComponent } from './components/seccion-formularios/formulario-template/formulario-template.component';
+import { SeccionBackofficeComponent } from './components/seccion-backoffice/seccion-backoffice.component';
+import { BackofficeGuard } from './guards/backoffice.guard';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   
@@ -54,6 +57,8 @@ const routes: Routes = [
   { path: 'spoty-app-inicio', component: SpotyInicioComponent },
   { path: 'spoty-app-buscar', component: SpotyBuscarComponent },
   { path: 'frutas-crud', component: FrutasCrudComponent },
+  { path: 'privado', component: SeccionBackofficeComponent, canActivate:[BackofficeGuard] },
+  { path: 'login', component: LoginComponent },
   { path: 'formulario-principal', component: FormulariosPrincipalComponent },
   { path: 'formulario-reactivo', component: FormularioReactivoComponent },
   { path: 'formulario-template', component: FormularioTemplateComponent },
