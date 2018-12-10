@@ -1,0 +1,24 @@
+<app-cabecera-servicios></app-cabecera-servicios>
+<app-spoty-navbar></app-spoty-navbar>
+<p>
+  <button (click)="renovarToken()">Renovar token</button>
+  <button (click)="traerUltimosAlbunes()">Traer ultimos albunes</button>
+</p>
+
+<div class="card-columns" >
+  <div class="card" *ngFor="let albun of albunes">
+    <img class="card-img-top" src="{{albun.images[0].url}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{albun.name}}</h5>
+      <p class="card-text">{{albun.uri}}</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">{{albun.release_date | date:"dd-MM-yyyy"}}</small>
+      <ul>
+        <li *ngFor="let artista of albun.artists" class="badge badge-info">{{artista.name}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+

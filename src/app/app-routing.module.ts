@@ -17,11 +17,17 @@ import { ServicioPrincipalComponent } from './components/seccion-servicios/servi
 import { TareasCrudComponent } from './components/seccion-crud/tareas-crud/tareas-crud.component';
 import { FormularioFrutasComponent } from './components/seccion-formularios/formulario-frutas/formulario-frutas.component';
 import { FormulariosPrincipalComponent } from './components/seccion-formularios/formularios-principal/formularios-principal.component';
-import { CustomPipeComponent } from './components/seccion-pipe/custom-pipe/custom-pipe.component';
 import { AngularPipeComponent } from './components/seccion-pipe/angular-pipe/angular-pipe.component';
 import { FrutasCrudComponent } from './components/seccion-crud/frutas-crud/frutas-crud.component';
 import { CardComponent } from './components/card/card.component';
 import { FrutasEditableCardComponent } from './components/seccion-crud/frutas-editable-card/frutas-editable-card.component';
+import { CustomPipesComponent } from './components/seccion-pipe/custom-pipes/custom-pipes.component';
+import { TypescriptPrincipalComponent } from './components/seccion-typescript/typescript-principal/typescript-principal.component';
+import { SpotyAppComponent } from './components/seccion-servicios/spoty-app/spoty-app.component';
+import { SpotyBuscarComponent } from './components/seccion-servicios/spoty-app-components/spoty-buscar/spoty-buscar.component';
+import { SpotyInicioComponent } from './components/seccion-servicios/spoty-app-components/spoty-inicio/spoty-inicio.component';
+import { FormularioReactivoComponent } from './components/seccion-formularios/formulario-reactivo/formulario-reactivo.component';
+import { FormularioTemplateComponent } from './components/seccion-formularios/formulario-template/formulario-template.component';
 
 const routes: Routes = [
   
@@ -35,16 +41,22 @@ const routes: Routes = [
   { path: 'instalacion-angular', component: InstalacionAngularComponent },
   { path: 'notas-angular', component: AngularNotasComponent },
   { path: 'pipe-principal', component: PipePrincipalComponent },
-  { path: 'custom-pipe', component: CustomPipeComponent },
+  { path: 'custom-pipes', component: CustomPipesComponent },
   { path: 'servicio-principal', component: ServicioPrincipalComponent },
   { path: 'tarea', component: TareaComponent },
   { path: 'tarea-crud', component: TareasCrudComponent },
   { path: 'formulario-frutas', component: FormularioFrutasComponent },
+  { path: 'typescript-principal', component: TypescriptPrincipalComponent },
   { path: 'angular-pipes', component: AngularPipeComponent },
   { path: 'detalle-fruta-editable/:id', component: FrutasEditableCardComponent },
   { path: 'detalle-fruta', component: CardComponent },
+  { path: 'spoty-principal', component: SpotyAppComponent },
+  { path: 'spoty-app-inicio', component: SpotyInicioComponent },
+  { path: 'spoty-app-buscar', component: SpotyBuscarComponent },
   { path: 'frutas-crud', component: FrutasCrudComponent },
   { path: 'formulario-principal', component: FormulariosPrincipalComponent },
+  { path: 'formulario-reactivo', component: FormularioReactivoComponent },
+  { path: 'formulario-template', component: FormularioTemplateComponent },
 
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', component: Page404Component }

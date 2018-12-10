@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";//para hacer uso del banana in a box
 import {HttpClientModule} from '@angular/common/http'; //peticiones http asincronas
+import {LOCALE_ID} from '@angular/core';
 
 //nuestros componentes
 import { AppRoutingModule } from './app-routing.module';
@@ -46,10 +47,23 @@ import { TareaTerminadoPipe } from './pipes/tarea-terminado.pipe';
 import { FormulariosPrincipalComponent } from './components/seccion-formularios/formularios-principal/formularios-principal.component';
 import { FormularioFrutasComponent } from './components/seccion-formularios/formulario-frutas/formulario-frutas.component';
 import { CabeceraFormulariosComponent } from './components/cabeceras/cabecera-formularios/cabecera-formularios.component';
-import { CustomPipeComponent } from './components/seccion-pipe/custom-pipe/custom-pipe.component';
 import { AngularPipeComponent } from './components/seccion-pipe/angular-pipe/angular-pipe.component';
 import { FrutasCrudComponent } from './components/seccion-crud/frutas-crud/frutas-crud.component';
 import { FrutasEditableCardComponent } from './components/seccion-crud/frutas-editable-card/frutas-editable-card.component';
+import { CustomPipesComponent } from './components/seccion-pipe/custom-pipes/custom-pipes.component';
+import { TypescriptPrincipalComponent } from './components/seccion-typescript/typescript-principal/typescript-principal.component';
+import { CabeceraTypescriptComponent } from './components/cabeceras/cabecera-typescript/cabecera-typescript/cabecera-typescript.component';
+import { CapitalizarPipe } from './pipes/capitalizar.pipe';
+import { FormatoMonedaPipe } from './pipes/formato-moneda.pipe';
+import { SpotyAppService } from './providers/spoty-app.service';
+import { SpotyAppComponent } from './components/seccion-servicios/spoty-app/spoty-app.component';
+import { SpotyInicioComponent } from './components/seccion-servicios/spoty-app-components/spoty-inicio/spoty-inicio.component';
+import { SpotyArtistaComponent } from './components/seccion-servicios/spoty-app-components/spoty-artista/spoty-artista.component';
+import { SpotyBuscarComponent } from './components/seccion-servicios/spoty-app-components/spoty-buscar/spoty-buscar.component';
+import { SpotyNavbarComponent } from './components/seccion-servicios/spoty-app-components/spoty-comun/spoty-navbar/spoty-navbar.component';
+import { FormularioTemplateComponent } from './components/seccion-formularios/formulario-template/formulario-template.component';
+import { FormularioReactivoComponent } from './components/seccion-formularios/formulario-reactivo/formulario-reactivo.component';
+
 
 
 
@@ -87,10 +101,22 @@ import { FrutasEditableCardComponent } from './components/seccion-crud/frutas-ed
     FormularioFrutasComponent,
     FormulariosPrincipalComponent,
     CabeceraFormulariosComponent,
-    CustomPipeComponent,
     AngularPipeComponent,
     FrutasCrudComponent,
-    FrutasEditableCardComponent
+    FrutasEditableCardComponent,
+    CustomPipesComponent,
+    TypescriptPrincipalComponent,
+    CabeceraTypescriptComponent,
+    CapitalizarPipe,
+    FormatoMonedaPipe,
+    SpotyAppComponent,
+    SpotyInicioComponent,
+    SpotyArtistaComponent,
+    SpotyBuscarComponent,
+    SpotyNavbarComponent,
+    FormularioTemplateComponent,
+    FormularioReactivoComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -102,7 +128,10 @@ import { FrutasEditableCardComponent } from './components/seccion-crud/frutas-ed
   ],
   providers: [
     VideojueosService,
-    TareaService
+    TareaService,
+    SpotyAppService
+   
+
   ],
   bootstrap: [AppComponent]
 })

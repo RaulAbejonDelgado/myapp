@@ -12,6 +12,8 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 })
 export class FrutasEditableCardComponent implements OnInit {
 
+
+
   private _objeto: Frutas;
   @Input('_objeto')
 
@@ -30,18 +32,21 @@ export class FrutasEditableCardComponent implements OnInit {
   id: number;
   formulario : FormGroup;
   color : FormControl;
+  colorNuevo : FormControl;
   
 
   constructor(private route: ActivatedRoute,public frutaService : FrutaService) {
     this.color= new FormControl();
+    this.colorNuevo = new FormControl();
     this.formulario = new FormGroup({
       nombre : new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(45)]),
       precio : new FormControl(0,[Validators.required,Validators.minLength(1),Validators.maxLength(5)]),
       calorias : new FormControl(0,[Validators.required,Validators.minLength(0)]),
-      colores: new FormArray( [ this.crearColorFormGroup() ]),// quito para que inicialmente solo aparezca un campo color al inicializarse, this.crearColorFormGroup(),
+      colores: new FormArray(  [this.crearColorFormGroup()] ),// quito para que inicialmente solo aparezca un campo color al inicializarse, this.crearColorFormGroup(),
       oferta : new FormControl(false),
       descuento : new FormControl(0),
-      imagen: new FormControl('https://picsum.photos/300/300/?random', [ Validators.required, Validators.pattern('^(http(s?):\/\/).+(\(.png|.jpg|j.peg|random))$')])})
+      imagen: new FormControl('https://picsum.photos/300/300/?random', [ Validators.required, Validators.pattern('^(http(s?):\/\/).+(\(.png|.jpg|j.peg|random))$')]),
+      coloresNuevos : new FormArray([ this.crearColorNuevoFormGroup() ])})
    }
 
   ngOnInit() {
@@ -60,8 +65,22 @@ export class FrutasEditableCardComponent implements OnInit {
 
   }
 
+  crearColorExistenteFormGroup():FormArray{
+    let arraycolores = this.formulario.get('colores2') as FormArray;
+    
+    this.objeto.colores.forEach(colort => {
+      
+       
+      //this.formulario.setValue(new FormGroup({  color: new FormControl(colort)}));
+      arraycolores.push(new FormGroup({  color: new FormControl(colort)}));
+    })
+    return arraycolores;
+
+  }
+
   crearColorFormGroup(): FormGroup{
     //console.log(this._objeto.colores);
+   
     console.log(this.color.value);
     return new FormGroup({
                 
@@ -69,23 +88,33 @@ export class FrutasEditableCardComponent implements OnInit {
         });
   }
 
+  crearColorNuevoFormGroup(){
+    console.log(this.colorNuevo.value);
+    return new FormGroup({
+        colorNuevo : new FormControl(this.colorNuevo.value)
+    })
+  }
+
   nuevoColor(){    
-    let arrayColores = this.formulario.get('colores') as FormArray;
+    let arrayColores = this.formulario.get('coloresNuevos') as FormArray;
     let arrayObjetoColores = this._objeto.colores;
     console.log(arrayColores);
     console.log(this._objeto.colores);
-    //this._objeto.colores.push(this.color.value);
+
     arrayColores.push(new FormGroup({color: new FormControl(this.color.value)}));
-    // for (let i of this._objeto.colores){
-    //   console.log(i);
-    //   this.formulario.controls.Colores = arrayColores;
-    //   arrayColores.push(new FormGroup({color: new FormControl(this.color.value)}));
-    // }
-    
   }
 
-  eliminarColor( index: number){
-    let arrayColores = this.formulario.get('colores') as FormArray;
+  eliminarColorExistente(index:number){
+    let arrayColores = this.formulario.get('coloresNuevos') as FormArray;
+    if ( this.objeto.colores.length > 1 ){
+      this.objeto.colores.splice(index, 1);
+      console.log(this.objeto.colores);
+    }
+    //this.getColores();  
+  }
+
+  eliminarColorNuevo( index: number){
+    let arrayColores = this.formulario.get('coloresNuevos') as FormArray;
     if ( arrayColores.length > 1 ){
       arrayColores.removeAt(index);
     }  
@@ -94,11 +123,18 @@ export class FrutasEditableCardComponent implements OnInit {
   actualizar(){
     console.log("modificar - sumitar %o",  this.formulario);
     let fruta = new Frutas();
+
     fruta.id = this.id;
     fruta.nombre = this.formulario.controls.nombre.value;
     fruta.precio = this.formulario.controls.precio.value;
     fruta.calorias = this.formulario.controls.calorias.value;
     fruta.colores = this.formulario.controls.colores.value;
+    //agregamos los valores
+    this.formulario.controls.coloresNuevos.value.forEach(element => {
+      
+        fruta.colores.push(element);
+          
+    });
     fruta.descuento = this.formulario.controls.descuento.value;
     fruta.imagen = this.formulario.controls.imagen.value;
     fruta.oferta = this.formulario.controls.oferta.value;
@@ -106,8 +142,43 @@ export class FrutasEditableCardComponent implements OnInit {
       console.debug(data);
       this._objeto = data;
     })
+
+  
     
 
   }
+  agregarColores(value: any): any {
+    value.array.forEach(element => {
+      
+    });
+  }
+ 
+
+  getColores(): string[]{
+    let arrayColores =[];
+     this._objeto.colores.forEach(color =>{
+      arrayColores.push(color);
+     })
+    
+    return this._objeto.colores;
+  }
+
+  getColoresFormArray(): FormArray{
+     let arrayColores = this.formulario.get('colores') as FormArray;
+     this.objeto.colores.forEach(el => {
+      arrayColores.push(new FormGroup({color: new FormControl(el)}));
+     })
+     this.formulario.controls.colores.setValue(arrayColores);
+     return this.formulario.get('colores') as FormArray;
+  }
+  
+  editarColor(indice:number, color:string){
+    console.log(this.color)
+    this.objeto.colores[indice] = this.color.value;
+
+    
+  }
+
+
 
 }

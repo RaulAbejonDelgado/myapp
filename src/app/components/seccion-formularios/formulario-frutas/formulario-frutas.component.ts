@@ -110,7 +110,7 @@ export class FormularioFrutasComponent implements OnInit {
 
   crearColorFormGroup(): FormGroup{
     return new FormGroup({
-                color: new FormControl('verde', [ Validators.required, Validators.minLength(2), Validators.minLength(15)])
+                color: new FormControl('#000000')
         });
   }
 }

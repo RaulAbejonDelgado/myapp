@@ -6,7 +6,8 @@ app-fruta{
 /* x y radio de la sombra, propagacion /*/
 app-cabecera-componentes  > nav, app-cabecera-pipe  > nav,
  app-cabecera-principal > nav, app-cabecera-crud > nav,
-  app-cabecera-servicios > nav, app-cabecera-formularios > nav {
+  app-cabecera-servicios > nav, app-cabecera-formularios > nav
+  app-cabecera-typescript > nav {
     -webkit-box-shadow: 0px 7px 5px -3px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 7px 5px -3px rgba(0,0,0,0.75);
     box-shadow: 0px 7px 5px -3px rgba(0,0,0,0.75);

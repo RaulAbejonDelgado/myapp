@@ -1,0 +1,94 @@
+<app-cabecera-pipe></app-cabecera-pipe>
+<div class="container">
+<h3>Pipes Personales </h3>
+<code>| alquilado </code>teniendo 2 parametros true o false
+  <code> return videojuegos.filter(v => v.alquilado === alquilado);</code>
+  <p>Donde recorremos todos los videojuegos preguntado por la propiedad alquilado debe coincidir con el parametro
+    usado segun el filtrado que usemos | alquilado:true o | alquilado:false.
+  </p>
+  <div class="row">
+
+    <div class="col">
+      <h4>Listado Videojuegos Sin uso del pipe </h4>
+      <ol>
+        <li *ngFor="let v of videojuegos">{{v.titulo}} - {{v.alquilado}}</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h4>Listado Alquilados | alquilado:true</h4>
+      <li *ngFor="let v of videojuegos | alquilado:true">{{v.titulo}} - {{v.alquilado}}</li>
+    </div>
+    <div class="col">
+      <h4>Listado Disponibles | alquilado:false</h4>
+      <li *ngFor="let v of videojuegos | alquilado:false">{{v.titulo}} - {{v.alquilado}}</li>
+    </div>
+
+  </div>
+  <hr>
+  <h3></h3>
+  <h2>Ejemplo de pipes</h2>
+  <p><b>pipe</b> customizado | sexo:1 -> el segundo parametro indica el tipo de filtrado 1-Chicos,
+    2-Chicas,3-Indefinido</p>  
+
+    <p><code>
+      personas.forEach(el => &#123;
+        if (el.Sexo === sexo) 
+          resultado.push(el);
+          &#125;
+          &#125;);
+    </code></p>
+    <p>En esta ocasion en vez de usar el metodo filter usamos un foreach para hacer el filtrado</p>
+  <p><code>*ngFor="let x of alumnosSexo | sexo:1"</code></p>
+  <div class="row">
+    <div class="col-4">
+      <h3>Chicos</h3>
+      <ul>
+        <li *ngFor="let x of alumnosSexo | sexo:1">{{x.nombre }}</li>
+      </ul>
+    </div>
+    <div class="col-4">
+      <h3>Chicas</h3>
+      <ul>
+        <li *ngFor="let x of alumnosSexo | sexo:2">{{x.nombre }}</li>
+      </ul>
+    </div>
+    <div class="col-4">
+      <h3>Indefinido</h3>
+      <ul>
+        <li *ngFor="let x of alumnosSexo | sexo:3">{{x.nombre }}</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<h3>Capitalizar</h3>
+<table width="100%" >
+  <thead class="bg-info">
+    <th>Valor original</th>
+    <th>Pipe</th>
+    <th>Resultado</th>
+  </thead>
+  <tbody>
+    <td>{{nombre}}</td>
+    <td>&#123; &#123; nombre | capitalizar &#125; &#125;</td>
+    <td>{{nombre | capitalizar}}</td>
+  </tbody>
+</table>
+<h3>Formato de moneda</h3>
+<p>Con el siguiente pipe se incrustara el valor que le asignemos como parametro</p>
+<p>El pipe ofial de currency coloca el simbolo de la moneda por delante de la cantidad.</p>
+<p>con este pipe el valor aparece por detras ,</p>
+<table width="100%" >
+  <thead class="bg-info">
+    <th>Valor original</th>
+    <th>Pipe</th>
+    <th>Resultado</th>
+  </thead>
+  <tbody>
+    <td>{{cantidad}}</td>
+    <td>&#123; &#123; nombre | formatoMoneda &#125; &#125;</td>
+    <td>{{cantidad | formatoMoneda:' €'}}</td>
+  </tbody>
+</table>
+
+

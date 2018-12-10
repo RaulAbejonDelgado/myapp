@@ -77,24 +77,41 @@
           </div>
           <div class="form-row justify-content-md-center">    
             <div class="form-group">               
-                <a  class="btn btn-success" (click)="nuevoColor()">Nuevo Color</a>
-                <button class="btn btn-danger" (click)="eliminarColor(i)">Eliminar color</button>
+                <!-- <a  class="btn btn-success" (click)="nuevoColor()">Nuevo Color</a>
+                <button class="btn btn-danger" (click)="eliminarColor(x)">Eliminar color</button> -->
+                <!-- Colores existentes-->
                <div formArrayName="colores">
-                        <div *ngFor="let color of formulario.get('colores').controls; let i = index;"> 
-                        <!-- <div *ngFor="let color of _objeto.colores; let x = index;">{{_objeto.colores[x].color}} -->
-                            <!-- <input type="color" name="color" formControlName="color" value="{{_objeto.colores[x].color}}"> -->
-                            <div *ngFor="let color of _objeto.colores; let x = index;">  
-                            <div [formGroupName]="i" *ngIf="i == x">     
-                            <!-- <input type="color" name="color" formControlName="color" >  -->   
-                                        <span>{{_objeto.colores[x].color}}</span>          
-                                <input type="color" name="color" formControlName="color"  value="{{_objeto.colores[x].color }}"> 
-                                <small *ngIf="formulario.controls.colores.invalid " class="text-danger">Errores de validacion del color</small>
-                                <small *ngIf="formulario.controls.colores.valid" class="text-success">color {{i+1}}</small>              
-                         </div>
-                        </div>
+                    <div *ngFor="let color of _objeto.colores; let x = index;">
+                     
+                        {{x}}  {{getColores()[x].color}} <input type="color"  value="{{color.color}}"  name="color"  ><i class="fas fa-trash-alt text-danger" (click)="eliminarColorExistente(x)"></i><i class="fas fa-edit" (click)="editarColor(x,color.color)" ></i>
+
                     </div> 
-                </div>
-                
+               </div>
+               
+                 <div class="form-row">
+                    <div class="form-group">               
+                        <a  class="btn btn-success" (click)="nuevoColor()">Nuevo Color</a>
+                        <div formArrayName="coloresNuevos">
+                            <div *ngFor="let color of formulario.get('coloresNuevos').controls; let i = index;">                                       
+                                <div [formGroupName]="i">
+                                    <input type="color" formControlName="colorNuevo"  class="form-control" name="colorNuevo"><i class="fas fa-trash-alt text-danger" (click)="eliminarColorNuevo(i)"></i>
+                                </div>                   
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- <div class="form-row">
+                        <div class="form-group">               
+                            Colores del objeto
+                            <div formArrayName="coloresNuevos2">
+                                <div *ngFor="let color of formulario.get('coloresNuevos2').controls; let i = index;">                                       
+                                    <div [formGroupName]="i">
+                                        <input type="color" formControlName="colorNuevo2"  class="form-control" name="colorNuevo2"><i class="fas fa-trash-alt text-danger" (click)="eliminarColorNuevo(i)"></i>
+                                    </div>                   
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
             </div>
             <div class="form-group">
                 <div class="form-group">    

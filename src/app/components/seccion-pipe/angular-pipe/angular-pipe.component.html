@@ -1,83 +1,137 @@
 <app-cabecera-pipe></app-cabecera-pipe>
 <div class="container">
-  <h3>Pipes de Angular</h3>
-  <div class="row">
-    <div class="col-6">
-      <h4><b>Pipes de fechas</b></h4>
-      <p>uppercase {{"asdasd" | uppercase}} </p>
-      <p>date {{ fecha | date }}</p>
-      <p>date:'short' {{ fecha | date:'short' }}</p>
-      <p>date:'medium' {{ fecha | date:'medium' }}</p>
-      <p>date:'long' {{ fecha | date:'long' }}</p>
-      <p>date:'full' {{ fecha | date:'full' }}</p>
-      <p>date:'mediumDate' {{ fecha | date:'mediumDate' }}</p>
-      <p>date:'longDate' {{ fecha | date:'longDate' }}</p>
-      <p>date:'fullDate' {{ fecha | date:'fullDate' }}</p>
-      <p>date:'shortTime' {{ fecha | date:'shortTime' }}</p>
-      <p>date:'mediumTime' {{ fecha | date:'mediumTime' }}</p>
-      <p>date:'longTime' {{ fecha | date:'longTime' }}</p>
-      <p>date:'fullTime' {{ fecha | date:'fullTime' }}</p>
-      <p>date:'dd-MM-yyyy' {{ fecha | date:'dd-MM-yyyy' }}</p>
-      <p>number:'2.2' {{numero}}, {{ numero | number:'2.2' }}</p>
-      <p>number:'1.2-2' {{numero}}, {{ numero | number:'1.2-2' }}</p>
-      <!--<p>number:'1.2-2 : es' {{numero}}, {{ numero | number:'1.2-2 : es' }} <span class="text-danger">no tenemos locale para español</span></p> -->
-    </div>
-    <div class="col-6">
+  <h3>{{title}}</h3>
+  
+  <div class="container">
 
-    </div>
-  </div>
+    <table class="table">
+      <thead class="bg-secondary">
+        <tr>
+          <th scope="col">Valor original</th>
+          <th scope="col">Pipe usado</th>
+          <th scope="col">Valor a mostrar</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>uppercase</td>
+          <td>{{ nombre | uppercase}}</td>
+        </tr>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>lowercase</td>
+          <td>{{ nombre | lowercase}}</td>
+        </tr>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>slice:2</td>
+          <td>{{ nombre | slice:2}}</td>
+        </tr>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>slice:0:3</td>
+          <td>{{ nombre | slice:0:3}}</td>
+        </tr>
+        <tr>
+          <td>[ {{ array }} ]</td>
+          <td>slice:0:3</td>
+          <td>{{ array | slice:0:3}}</td>
+        </tr>
+        <tr>
+          <td> {{ PI }} </td>
+          <td>number:'2.0-10'</td>
+          <td>{{ PI | number:'2.0-10'}}</td>
+        </tr>
+        <tr>
+          <td> {{ PI }} </td>
+          <td>number:'1.0-2'</td>
+          <td>{{ PI | number:'1.0-2'}}</td>
+        </tr>
+        <tr>
+          <td> {{ a }} </td>
+          <td> a | percent</td>
+          <td>{{ a | percent}}</td>
+        </tr>
+        <tr>
+          <td> {{ a }} </td>
+          <td>  a | percent:'2.2-2'</td>
+          <td>{{ a | percent:'2.2-2'}}</td>
+        </tr>
+        <tr>
+          <td> {{ salario }} </td>
+          <td>  salario | currency</td>
+          <td>{{ salario | currency}}</td>
+        </tr>
+        <tr>
+          <td> {{ salario }} </td>
+          <td>  salario | currency:'EUR'</td>
+          <td>{{ salario | currency:'EUR'}}</td>
+        </tr>
+        <tr>
+          <td> {{ salario }} </td>
+          <td>  salario | currency:'EUR':true:'4.3-4'</td>
+          <td>{{ salario | currency:'EUR':true:'4.3-4'}}</td>
+        </tr>
+        <tr>
+          <td> {{ salario }} </td>
+          <td>  salario | number:'2.2'</td>
+          <td>{{ salario | number:'2.2'}}</td>
+        </tr>
+        <tr>
+          <td> {{ fecha }} </td>
+          <td> fecha | date:'shortTime' </td>
+          <td>{{ fecha | date:'shortTime' }}</td>
+        </tr>
+        <tr>
+          <td> {{ fecha }} </td>
+          <td> fecha | date </td>
+          <td>{{ fecha | date }}</td>
+        </tr>
+        <tr>
+          <td> {{ fecha }} </td>
+          <td> fecha | date:'medium' </td>
+          <td>{{ fecha | date:'medium' }}</td>
+        </tr>
+        <tr>
+          <td> {{ fecha }} </td>
+          <td> fecha | date:'MMMM - dd' </td>
+          <td>{{ fecha | date:'MMMM - dd' }}</td>
+        </tr>
+        <tr>
+          <td> {{ fecha }} </td>
+          <td> fecha | date:'MMMM - dd' </td>
+          <td>{{ fecha | date:'MMMM - dd' }}</td>
+        </tr>
+         
+       <!-- <tr> 
+          <td> {{ nombre2 }} </td>
+          <td> constraseña:{{activar}}
+          <br>
+            <button
+              (click)="activar = !activar"
+              type="button"
+              class="btn btn-outline-primary">Activar/Desactivar</button>
+          </td>
+          <td>{{ nombre2 | password:activar }}</td>
+        </tr>-->
+      </tbody>
+    </table>
+    <h4>JSON  producto | json </h4>
+    <pre>
+      {{ producto | json }}
+    </pre>
+
+    <!-- <h4>Youtube </h4>
+<iframe width="560" height="315" [src]="video | domseguro:'https://www.youtube.com/embed/'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div> -->
+
 
 
 
   <hr>
-  <h3>Pipes Personales <code>| alquilado </code>teniendo 2 parametros true o false</h3>
-
-  <div class="row">
-
-    <div class="col">
-      <h4>Listado Videojuegos </h4>
-      <ol>
-        <li *ngFor="let v of videojuegos">{{v.titulo}} - {{v.alquilado}}</li>
-      </ol>
-    </div>
-    <div class="col">
-      <h4>Listado Alquilados</h4>
-      <li *ngFor="let v of videojuegos | alquilado:true">{{v.titulo}} - {{v.alquilado}}</li>
-    </div>
-    <div class="col">
-      <h4>Listado Disponibles</h4>
-      <li *ngFor="let v of videojuegos | alquilado:false">{{v.titulo}} - {{v.alquilado}}</li>
-    </div>
-
-  </div>
-  <hr>
-  <h3></h3>
-  <h2>Ejemplo de pipes</h2>
-  <p><b>pipe</b> customizado | sexo:1 -> el segundo parametro indica el tipo de filtrado 1-Chicos,
-    2-Chicas,3-Indefinido</p>
-  <p><code>*ngFor="let x of alumnosSexo | sexo:1"</code></p>
-  <div class="row">
-    <div class="col-4">
-      <h3>Chicos</h3>
-      <ul>
-        <li *ngFor="let x of alumnosSexo | sexo:1">{{x.nombre }}</li>
-      </ul>
-    </div>
-    <div class="col-4">
-      <h3>Chicas</h3>
-      <ul>
-        <li *ngFor="let x of alumnosSexo | sexo:2">{{x.nombre }}</li>
-      </ul>
-    </div>
-    <div class="col-4">
-      <h3>Indefinido</h3>
-      <ul>
-        <li *ngFor="let x of alumnosSexo | sexo:3">{{x.nombre }}</li>
-      </ul>
-    </div>
-  </div>
-
-
+  
 
 
 

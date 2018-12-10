@@ -8,97 +8,45 @@ import { Persona } from 'src/app/model/persona';
   styleUrls: ['./angular-pipe.component.scss']
 })
 export class AngularPipeComponent implements OnInit {
-  fecha : Date;
-  numero : number;
-  videojuegos : Videojuego[];
-  alumnosSexo : Persona[];
+
+  title: string; 
+  nombre:string ;
+  array:number[];
+  PI : number;
+  a:number ;
+  salario :number;
+  fecha = new Date();
+  nombre2 :string;
+  activar :boolean;
+  producto :any;
 
   constructor() {
 
-    this.numero = 1231.1231231231
+    console.trace('AngularPipeComponent constructor');
+    this.title = 'Pipes de Angular';
+    this.nombre ='Raul';
+    this.array = [1,2,3,4,5,6,7,8,9,];
+    this.PI = Math.PI;
+    this.salario = 1234.5 ;
+    
     this.fecha = new Date();
-    this.videojuegos = [];
-    this.loadVideojuegos();
-    this.alumnosSexo = [];
-    this.loadAlumnos();
+    this.a = 0.234;
+    this.activar = false;
+    this.producto = {
+      nombre:'Pagina web',
+      tipo:'servicio',
+      coste:200,
+      almacenable:true
+  };
+
+
     
    }
 
   ngOnInit() {
-    console.trace('PipeComponent ngOnInit');
+    console.trace('AngularPipeComponent ngOnInit');
   }
 
-  loadVideojuegos(): void{
-    console.trace('PipeComponent loadVideojuegos');
-    let v : Videojuego = new Videojuego();
-    v.titulo = "Mario";
-    v.alquilado = true;
-    this.videojuegos.push(v);
 
-    v  = new Videojuego();
-    v.titulo = "donkey";
-    v.alquilado = true;
-    this.videojuegos.push(v);
-
-    v  = new Videojuego();
-    v.titulo = "zelda";
-    v.alquilado = false;
-    this.videojuegos.push(v);
-
-    v  = new Videojuego();
-    v.titulo = "space";
-    v.alquilado = false;
-    this.videojuegos.push(v);
-
-    console.trace(this.videojuegos)
-  }
-
-  loadAlumnos(): void{
-    let a = new Persona();
-
-    a.nombre = "raul";
-    a.Sexo = 2;
-    this.alumnosSexo.push(a);
-
-    a = new Persona();
-    a.nombre = "Luis";
-    a.Sexo = 2;
-    this.alumnosSexo.push(a);
-
-    a = new Persona();
-    a.nombre = "Ainara";
-    a.Sexo = 1;
-    this.alumnosSexo.push(a);
-
-    a = new Persona();
-    a.nombre = "ASier";
-    a.Sexo = 2;
-    this.alumnosSexo.push(a);
-    
-    a = new Persona();
-    a.nombre="Adrian";
-    a.Sexo = 2;
-    this.alumnosSexo.push(a);
-
-    a = new Persona();
-    a.nombre = "Adriana";
-    a.Sexo = 1;
-    this.alumnosSexo.push(a);
-
-    a = new Persona();
-    a.nombre="Andrea";
-    a.Sexo = 1;
-    this.alumnosSexo.push(a);
-
-    a = new Persona();
-    a.nombre = "valeria";
-    a.Sexo = 1;
-    this.alumnosSexo.push(a);
-
-    a = new Persona();
-    a.nombre = "Manolo";
-    a.Sexo = 3;
-    this.alumnosSexo.push(a);
-  }
 
 }
