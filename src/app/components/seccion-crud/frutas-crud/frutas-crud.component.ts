@@ -82,13 +82,7 @@ export class FrutasCrudComponent implements OnInit {
   }
 
   vaciarFormulario(){
-    this.formulario.controls.nombre.setValue('');
-    this.formulario.controls.precio.setValue('');
-    this.formulario.controls.colores.setValue([]);
-    this.formulario.controls.descuento.setValue('');
-    this.formulario.controls.imagen.setValue('');
-    this.formulario.controls.calorias.setValue('');
-    this.formulario.controls.oferta.setValue('');
+    this.formulario.reset();
   }
 
 

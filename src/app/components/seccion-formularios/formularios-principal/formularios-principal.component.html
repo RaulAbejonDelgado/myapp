@@ -1,32 +1,54 @@
 <app-cabecera-formularios></app-cabecera-formularios>
 <h3>Formularios Angular</h3>
 <a href="https://angular.io/guide/forms-overview">Documentacion oficial </a>
-<div class="template">
-<p>
-    <b>Formulario template: </b>Toda la configuracion y la validaciones se hacen del lado del html
-</p>
-<p>
-    <b>Si hacemos uso de ngModel: </b>debemos usar la propiedad name en nuestra etiqueta html.<br>
-    Al hacer uso de ngModel automaticamente se añaden ciertas clases a nuestra caja de texto
-  </p>
-  <ul>
-      <li> ng-untouched / ng-touched:  Detecta si el usuario hizo o no click en la caja de texto </li>
-      <li> ng-pristine / ng-dirty : Detecta si el usuario introducio o no algun caracter en la caja de texto</li>
-      <li> ng-valid ng-invalid : Detecta si es valido el contenido del campo</li>
-    </ul>
-    <p>Con las clases mencionadas podemos usarlas, para darle los estilos apropiados a los determinados eventos y validaciones</p>
-    <p>Las propiedades de validacion pueden ser usadas como punto de referencia para las validaciones de angular,
-       usando minlength para angular no sera valido hasta que esta regla se cumpla</p>
-    <p>Con <code>(ngSubmit)="nombreFuncion()"</code> en la etiqueta del formulario, podemos decirle a que metodo ha de dirigirse al hacer el posteo de informacion.</p>
-    <p>Con <code>#nombreFormulario="ngForm"</code>en la etiqueta del formulario, podemos usar el formulario como un objeto y mandarselo como parametro en la funcion ngSubmit
-      <code>  #formularioTemplate="ngForm" (ngSubmit)="guardarFormulario(formularioTemplate)"  novalidate></code></p>
-      <p>De esta manera obtenemos todas las propiedades del formulario, como el estado del formulario, propiedades de entrada, etc..</p>
-      <p>Lo correcto es usar la clase ngForm para darle el tipo al parametro den entrada de la funcion que recoje el posteo de informacion
-      <p>Si queremos setear cierta informacion ya en el formulario con los valores de algun objeto podemos usar <code>[ngModel]="objeto.propiedad"</code><br>
-      Esto nor permite setear los valores del formulario con los de un objeto , cuando hagamos post, cambiaran los valores
-    del formulario pero no los del objeto. para que eso suceda debemos usar el banana in box , entonces seria totalmente bidirecional la alteracion de datos.
+<div class="row">
+  <div class="col">
+    <p>
+        <b>Formulario template: </b>Toda la configuracion y la validaciones se hacen del lado del html
+    </p>
+    <p>
+      <b>Si hacemos uso de ngModel: </b>debemos usar la propiedad name en nuestra etiqueta html.<br>
+      Al hacer uso de ngModel automaticamente se añaden ciertas clases a nuestra caja de texto
+    </p>
+    <ul>
+        <li> ng-untouched / ng-touched:  Detecta si el usuario hizo o no click en la caja de texto </li>
+        <li> ng-pristine / ng-dirty : Detecta si el usuario introducio o no algun caracter en la caja de texto</li>
+        <li> ng-valid ng-invalid : Detecta si es valido el contenido del campo</li>
+      </ul>
+      <p>Con las clases mencionadas podemos usarlas, para darle los estilos apropiados a los determinados eventos y validaciones</p>
+      <p>Las propiedades de validacion pueden ser usadas como punto de referencia para las validaciones de angular,
+        usando minlength para angular no sera valido hasta que esta regla se cumpla</p>
+      <p>Con <code>(ngSubmit)="nombreFuncion()"</code> en la etiqueta del formulario, podemos decirle a que metodo ha de dirigirse al hacer el posteo de informacion.</p>
+      <p>Con <code>#nombreFormulario="ngForm"</code>en la etiqueta del formulario, podemos usar el formulario como un objeto y mandarselo como parametro en la funcion ngSubmit
+        <code>  #formularioTemplate="ngForm" (ngSubmit)="guardarFormulario(formularioTemplate)"  novalidate></code></p>
+        <p>De esta manera obtenemos todas las propiedades del formulario, como el estado del formulario, propiedades de entrada, etc..</p>
+        <p>Lo correcto es usar la clase ngForm para darle el tipo al parametro den entrada de la funcion que recoje el posteo de informacion
+        <p>Si queremos setear cierta informacion ya en el formulario con los valores de algun objeto podemos usar <code>[ngModel]="objeto.propiedad"</code><br>
+        Esto nor permite setear los valores del formulario con los de un objeto , cuando hagamos post, cambiaran los valores
+        del formulario pero no los del objeto. para que eso suceda debemos usar el banana in box , entonces seria totalmente bidirecional la alteracion de datos.
       </p>
-</div>
+    </div>
+    <div class="col-1">
+
+    </div>
+    <div  class="col">
   <p>
       <b>Formulario Reactivo: </b>Toda la configuracion la logica esta al lado del componentes, las validaciones son mas robustas
-    </p>
+  </p>
+  <p>La proximacion por data nos da mayor control a la hora de hacer validaciones</p>
+  <p>Para poder hacer uso de los controles y las validaciones, debemos importar los modulos <code>import &#123; FormGroup, FormControl, Validators &#125; from '@angular/forms';</code></p>
+  <p>Debemos añadirlos tambien en el app.module.ts en la seccion de <b>Imports </b><code>FormsModule, ReactiveFormsModule,</code></p>
+  <p>En la etiqueta del formulario agregamos <code>[formGroup]="formulario"</code>
+  donde formulario equivale al nombre con el que hemos declarado nuestro formulario en el .ts <code>formulario : FormGroup;</code>
+  De esta forma relacionamos el formulario html con el formulario del ts</p>
+  <p>Añadimos <code>(ngSubmit)="metodoRecepcionPosteo()"</code> a la etiqueta formulario para poder recivir
+  los datos en la funcion metodoRecepcionPosteo()</p>
+  <p>Para enlazar los inputs de nuestro formulario html con los inputs definidos dentro del formulario(formGroup) del ts. debemos 
+    añadir <code>formControlName="nombre"</code> a cada input de esta forma antendera a las especificaciones de requisitos que 
+    se definan para cada campo en el .ts .
+  </p>
+  <p>Ahora si modificamos la definicion de los formControl que estan dentro del formulario del .ts
+     <code>'nombre' : new FormControl('',Validators.required),</code> estamos creando el control requerido para ese input, que de no ser valido a su vez inhabilita el estado
+    del formulario </p>
+  </div>
+</div>

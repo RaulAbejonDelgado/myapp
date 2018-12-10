@@ -130,6 +130,19 @@
       "descuento": 0,
       "imagen": "https://picsum.photos/300/300/?random",
       "id": 10
+    },
+    {
+      "nombre": "fresat",
+      "precio": 2.55,
+      "calorias": 0,
+      "colores": [
+        {
+          "color": "#7bdb23"
+        }
+      ],
+      "descuento": 0,
+      "imagen": "https://picsum.photos/300/300/?random",
+      "id": 11
     }
   ],
   "juegos": [
