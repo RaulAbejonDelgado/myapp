@@ -82,6 +82,7 @@
                 <!-- Colores existentes-->
                <div formArrayName="colores">
                     <div *ngFor="let color of _objeto.colores; let x = index;">
+
                      
                         {{x}}  {{getColores()[x].color}} <input type="color"  value="{{color.color}}"  name="color"  ><i class="fas fa-trash-alt text-danger" (click)="eliminarColorExistente(x)"></i><i class="fas fa-edit" (click)="editarColor(x,color.color)" ></i>
 
@@ -94,7 +95,8 @@
                         <div formArrayName="coloresNuevos">
                             <div *ngFor="let color of formulario.get('coloresNuevos').controls; let i = index;">                                       
                                 <div [formGroupName]="i">
-                                    <input type="color" formControlName="colorNuevo"  class="form-control" name="colorNuevo"><i class="fas fa-trash-alt text-danger" (click)="eliminarColorNuevo(i)"></i>
+                                    
+                                    <input type="color" formControlName="color"  class="form-control" name="color"><i class="fas fa-trash-alt text-danger" (click)="eliminarColorNuevo(i)"></i>
                                 </div>                   
                             </div>
                         </div>
