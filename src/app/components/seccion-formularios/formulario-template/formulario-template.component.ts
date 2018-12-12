@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { NgForm, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-template',
@@ -7,7 +7,9 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./formulario-template.component.scss']
 })
 export class FormularioTemplateComponent implements OnInit {
-
+  correo:FormGroup;
+  apellido:FormGroup;
+  nombre:FormGroup;
   constructor() { }
 
   ngOnInit() {

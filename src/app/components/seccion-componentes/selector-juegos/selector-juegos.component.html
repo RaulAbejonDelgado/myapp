@@ -68,7 +68,7 @@ Tambien pintamos por pantalla el listado de juegos iterando atraves de un array 
     
     <p>Juego </p>
     <p *ngFor="let j of carrito">Juego:{{j.titulo}} <br> Precio total : {{j.total}} <br> <button (click)="restarUno(j)">-</button> Total Selecionados : {{j.cantidad}}<button (click)="sumarUno(j)">+</button> </p>
-    <button (click)="comprar()" class="btn btn-block btn-outline-primary">Comprar</button>
+    
   </div>
   
 </div>

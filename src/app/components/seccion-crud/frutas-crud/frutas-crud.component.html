@@ -50,10 +50,12 @@
       </div>
       <div class="form-row justify-content-md-center">    
         <div class="form-group">               
-            <a  class="btn btn-success" (click)="nuevoColor()">Nuevo Color</a>
-                <button class="btn btn-danger" (click)="eliminarColor(i)">Eliminar color</button>
+            
             <div formArrayName="colores">
-                <div *ngFor="let color of formulario.get('colores').controls; let i = index;">                                       
+                    
+                <div *ngFor="let color of formulario.get('colores')?.controls; let i = index;">   
+                        <a  class="btn btn-success" (click)="nuevoColor()">Nuevo Color</a>
+                        <button class="btn btn-danger" (click)="eliminarColor(i)">Eliminar color</button>                                    
                     <div [formGroupName]="i">
                         <input type="color" formControlName="color"  class="form-control" name="color">
                         <small *ngIf="formulario.controls.colores.invalid " class="text-danger">Errores de validacion del color</small>

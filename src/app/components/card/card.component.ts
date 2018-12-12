@@ -10,6 +10,8 @@ import { FormControl, FormGroup, FormArray, Validators } from '../../../../node_
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
+
+  event:Event;
    private _objeto: Frutas;
   @Input('_objeto')
 

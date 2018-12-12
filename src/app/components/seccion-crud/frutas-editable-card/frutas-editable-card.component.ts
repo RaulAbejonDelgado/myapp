@@ -12,7 +12,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 })
 export class FrutasEditableCardComponent implements OnInit {
 
-
+  event:Event;
 
   private _objeto: Frutas;
   @Input('_objeto')

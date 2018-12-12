@@ -57,7 +57,7 @@ iiiep
          <input type="color" formControlName="colores" class="form-control" name="colores">
           <!-- <small  class="text-danger">Errores colores</small>        -->
          <div formArrayName="colores">
-            <div *ngFor="let color of formulario.get('colores').controls; let i = index;">                                       
+            <div *ngFor="let color of formulario.get('colores')?.controls; let i = index;">                                       
                 <div [formGroupName]="i">
                     <input formControlName="color" >
                     <button (click)="eliminarColor(i)">Eliminar</button>
