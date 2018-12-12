@@ -1,3 +1,4 @@
+import { Videojuego } from './../../../model/videojuego';
 import { Component, OnInit } from '@angular/core';
 import { Frutas } from 'src/app/model/frutas';
 
@@ -38,6 +39,7 @@ export class FrutaComponent implements OnInit {
     this.loadOfertas();
     this.loadFrutasColor();
     this.consegirPrimeraFrutaVerde();
+    this.consegirPrimeraFrutaOferta();
    }
 
    // despues de haberse construido el componente despues de renderizarse
@@ -112,11 +114,15 @@ export class FrutaComponent implements OnInit {
 
   loadTotal(): void{
 
-  this.precioTotal = this.fruits.map(el => el.precio).reduce((c,p) => c+p);
+    console.log("loadTotal " );
+    this.precioTotal = this.fruits.map(el => el.precio).reduce((c,p) => c+p);
+    console.log(this.fruits.map(el => el.precio));
+    console.log(this.fruits.map(el => el.precio).reduce((c,p) => c+p));
+    //this.fruits.map(el => el.precio).
 }
 
 consegirPrimeraFrutaOferta():void{
-
+ 
   this.primeraFrutaOferta = this.fruits.find( fruta => fruta.oferta === true );
 }
 consegirPrimeraFrutaVerde():void{

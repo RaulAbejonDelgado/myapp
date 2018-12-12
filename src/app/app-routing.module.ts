@@ -1,3 +1,4 @@
+import { ProgramacionFuncionalComponent } from './components/seccion-typescript/programacion-funcional/programacion-funcional.component';
 import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'tarea-crud', component: TareasCrudComponent },
   { path: 'formulario-frutas', component: FormularioFrutasComponent },
   { path: 'typescript-principal', component: TypescriptPrincipalComponent },
+  { path: 'programacion-funcional', component: ProgramacionFuncionalComponent },
   { path: 'angular-pipes', component: AngularPipeComponent },
   { path: 'detalle-fruta-editable/:id', component: FrutasEditableCardComponent },
   { path: 'detalle-fruta', component: CardComponent },
@@ -59,6 +61,7 @@ const routes: Routes = [
   { path: 'frutas-crud', component: FrutasCrudComponent },
   { path: 'privado', component: SeccionBackofficeComponent, canActivate:[BackofficeGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'seccion-guards', component: SeccionBackofficeComponent },
   { path: 'formulario-principal', component: FormulariosPrincipalComponent },
   { path: 'formulario-reactivo', component: FormularioReactivoComponent },
   { path: 'formulario-template', component: FormularioTemplateComponent },

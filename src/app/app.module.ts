@@ -75,6 +75,8 @@ import { LoginService } from './providers/login.service';
 
 //guards
 import { BackofficeGuard } from './guards/backoffice.guard';
+import { ProgramacionFuncionalComponent } from './components/seccion-typescript/programacion-funcional/programacion-funcional.component';
+import { CabeceraBackofficeComponent } from './components/cabeceras/cabecera-backoffice/cabecera-backoffice.component';
 
 
 
@@ -130,6 +132,8 @@ import { BackofficeGuard } from './guards/backoffice.guard';
     FormularioReactivoComponent,
     SeccionBackofficeComponent,
     LoginComponent,
+    ProgramacionFuncionalComponent,
+    CabeceraBackofficeComponent,
 
   ],
   imports: [

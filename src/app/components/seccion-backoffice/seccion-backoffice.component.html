@@ -1,7 +1,42 @@
-<h1>Estamoso en el backoffice</h1>
+<app-cabecera-backoffice></app-cabecera-backoffice>
+<h1>Estamos en el backoffice</h1>
 
 <p>
 Solo pueden acceder usuarios logueados
 </p>
+<p>Los guards nos permite condicionar el acceso a determinados sitios de la aplicacion
+    web. Para ello se ha creado un servicio loginService, que comprueba si los datos
+    introducidos en el formulario concuerdan.
+</p>
+<p>Para crear un guard : <code>ng g guard guards/nuestro-guard</code></p>
+<p>Importante para hacer la relacion del guard con la ruta añadirlo en el <b>
+  app.routing.module.ts</b> . Esto es lo que hara ejecutar el codigo del guard y segun nuestras condiciones
+  podremos hacer uso de <code>this.router.navigate(['ruta']);</code> en funcion de nuestras necesidades.
+</p>
+<p>
+  <code>
 
+      &#123; path: 'privado', component: SeccionBackofficeComponent, canActivate:[BackofficeGuard] },
+  
+  
+  </code>
+</p>
+<p><code>
+         canActivate(<br>
+   
+            next: ActivatedRouteSnapshot,<br>
+            //devuelve 3 tipos de retorno<br>
+            state: RouterStateSnapshot): Observable< boolean > | Promise< boolean > | boolean &#123;<br>
+              if ( !this.loginService.isLogged() ) &#123;<br>            
+                this.router.navigate(['login']);<br>
+                return false;<br>
+                &#125;<br>
+               return true;<br>
+               <span>&#125;</span> 
+              
+              
+          
+        &#125;
+
+</code></p>
 <button (click)="logOut()">Cerrar Sesion- Log out</button>

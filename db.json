@@ -48,14 +48,14 @@
       "nombre": "kiwi",
       "precio": 6.68,
       "calorias": 320,
-      "imagen": "https://5.imimg.com/data5/KU/QG/MY-41533060/kiwi-fruit-500x500.jpg",
-      "oferta": false,
       "colores": [
         {
           "color": "#DEE8DE"
         }
       ],
-      "descuento": 0
+      "oferta": true,
+      "descuento": 0,
+      "imagen": "https://5.imimg.com/data5/KU/QG/MY-41533060/kiwi-fruit-500x500.jpg"
     },
     {
       "id": 3,
@@ -123,9 +123,9 @@
     {
       "titulo": "fallout",
       "imagen": "",
-      "precio": 35,
-      "anio": 1998,
-      "alquilado": false,
+      "precio": 22,
+      "anio": 2000,
+      "alquilado": true,
       "descripcion": "loren",
       "cantidad": 0,
       "descuento": 0
@@ -133,9 +133,39 @@
     {
       "titulo": "lineage2",
       "imagen": "",
-      "precio": 35,
-      "anio": 1998,
+      "precio": 15,
+      "anio": 1995,
       "alquilado": false,
+      "descripcion": "loren",
+      "cantidad": 0,
+      "descuento": 0
+    },
+    {
+      "titulo": "Comandos",
+      "imagen": "",
+      "precio": 13,
+      "anio": 1993,
+      "alquilado": false,
+      "descripcion": "loren",
+      "cantidad": 0,
+      "descuento": 0
+    },
+    {
+      "titulo": "Gta v",
+      "imagen": "",
+      "precio": 40,
+      "anio": 2015,
+      "alquilado": false,
+      "descripcion": "loren",
+      "cantidad": 0,
+      "descuento": 0
+    },
+    {
+      "titulo": "Pokemon",
+      "imagen": "",
+      "precio": 22,
+      "anio": 2018,
+      "alquilado": true,
       "descripcion": "loren",
       "cantidad": 0,
       "descuento": 0

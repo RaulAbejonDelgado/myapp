@@ -1,0 +1,134 @@
+<app-cabecera-typescript></app-cabecera-typescript>
+<h2>Programacion funcional </h2>
+<p>
+  <a href="https://es.wikipedia.org/wiki/Programaci%C3%B3n_funcional">Fuente</a>
+</p>
+<h3>Representacion en tabla de los objetos sobre los que iran los ejercicios.</h3>
+<table width="100%">
+  <thead>
+    <th>titulo</th>
+    <th>imagen</th>
+    <th>precio</th>
+    <th>alquilado</th>
+    <th>descripcion</th>
+    <th>anyo</th>
+    <th>cantidad</th>
+    <th>total</th>
+    <th>descuento</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let juego of juegos; let i = index;">
+      <td>{{juego.titulo}}</td>
+      <td>{{juego.imagen}}</td>
+      <td>{{juego.precio}}</td>
+      <td>{{juego.alquilado}}</td>
+      <td>{{juego.descripcion}}</td>
+      <td>{{juego.anyo}}</td>
+      <td>{{juego.cantidad}}</td>
+      <td>{{juego.total}}</td>
+      <td>{{juego.descuento}}</td>
+  </tr>
+  </tbody>
+</table>
+<div class="row">
+    <div class="col-3">
+
+        <h3>Find</h3>
+        <p class="text-success">Retorna un objeto </p>
+        <p>Donde previamente hemos cargado en un array de videojuegos 'juegos' los juegos que tenemos,
+          y sobre ese array queremos buscar el juego con titulo lineage2, lo guardamos en j que es del tipo 
+          VideoJuego
+        </p>
+        <p><code>
+            primerJuegoPorNombre()&#123;<br>
+            
+              this.j = this.juegos.find(juego =>  juego.titulo === 'lineage2');<br>
+        
+              
+            }
+        </code></p>
+        <p>Esto nos devolvera en caso de coincidencia un objeto videojuego -> {{j |json}}, en caso de coincidencia multiple
+          devolvera el primer resultado.
+        </p>
+        <ul>
+            
+          <li>{{j.titulo}}</li>
+        </ul>
+
+    </div>
+    <div class="col-3">
+        
+        <h3>FILTER</h3>
+        <p class="text-success">Retorna una colecion de objetos</p>
+        <p>Filter en cambio nos permite obtener la agrupacion de coindencias segun la condicion</p>
+        <p>
+          <code>
+              juegosAlquiladosFn()&#123;
+          
+                this.juegosAlquilados = this.juegos.filter(juego =>  juego.alquilado === true);
+                  
+              }
+          </code>
+        </p>
+        <ul>
+          <li *ngFor="let ja of juegosAlquilados">{{ja.titulo}}</li>
+        </ul>
+
+    </div>
+    <div class="col-3">
+        <h3>MAP</h3>
+        <p class="text-success">Retorna un objeto array del tipo del campo por el que se filtra 
+          En este caso un array  de string con los titulos de los juegos
+        </p>
+        <p>En el siguiente ejemplo vamos a cojer el titulo de todos los juegos y los guardaremos en un
+          array de string.
+        </p>
+        <p>
+          <code>
+              obtenerNombreJuegos()&#123;
+                this.nombreJuegos = this.juegos.map(juego => juego.titulo );
+              }
+
+            
+          </code>
+        </p>
+        <ul>
+          <li *ngFor="let nombre of nombreJuegos">{{nombre}}  </li>
+        </ul>
+    </div>
+    <div class="col-3">
+
+        <h3>MAP Y REDUCE</h3>
+        <p class="text-success">Devuelve un entero</p>
+        <p>
+          <code>
+              obtenerTotalPrecios()&#123;
+                this.totaColumnaPrecio = this.juegos.map(juego => juego.precio).reduce((c,p) => c+p );
+                console.log(this.totaColumnaPrecio);
+              }
+          </code>
+        </p>
+        <p>En el siguiente ejemplo nos apoyamos de map para filtrar el resultado por el obtenerTotalPrecios() 
+            obteniendo:<br>
+            [35,22,15,13,40,22] esto lo obtenemos con <code>this.juegos.map(juego => juego.precio)</code>
+             y con reduce((c,p) => c+p ); en la primera vuelta c coje el valor 0(35) y p coje el valor1(22) y se suman =>c+p
+             en la siguiente vuelta c representa la suma anterior y p pasaria a cojer el valor2(15) y se repete la operacion => c+p
+             hasta fin del array obteniendo la suma total .
+            </p>
+        <p>{{totaColumnaPrecio | currency:'EUR'}}</p>
+        <p>{{precioMedio | currency:'EUR'}}</p>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+  
+
+
+

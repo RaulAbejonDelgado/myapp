@@ -22,15 +22,15 @@ export class Videojuego {
 
     constructor(){
 
-        this._titulo ="Fornite";
-        this._imagen = "assets/imgs/videogame_cover.png";
-        this._precio = 0;
-        this._alquilado = false;
-        this._descripcion = "Loren ipsum Loren ipsumLoren ipsumLoren ipsumLoren ipsumLoren ipsumLoren ipsumLoren ipsum";
-        this._anyo = 0;
-        this._cantidad = 0;
-        this._total = 0;
-        this._descuento = 0;
+        this.titulo ="Fornite";
+        this.imagen = "assets/imgs/videogame_cover.png";
+        this.precio = 0;
+        this.alquilado = false;
+        this.descripcion = "Loren ipsum Loren ipsumLoren ipsumLoren ipsumLoren ipsumLoren ipsumLoren ipsumLoren ipsum";
+        this.anyo = 0;
+        this.cantidad = 0;
+        this.total = 0;
+        this.descuento = 0;
     }
 
     public get titulo(): string {

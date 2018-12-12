@@ -76,6 +76,14 @@
           
           </div>
           <div class="form-row justify-content-md-center">    
+                <div class="form-group">
+                        <div class="form-group">    
+                            <label for="imagen">Imagen</label>
+                            <input type="text" formControlName="imagen" class="form-control" name="imagen">
+                            <small *ngIf="formulario.controls.imagen.invalid " class="text-danger">Errores de validacion en imagen revise la extension de la ruta</small>
+                            <small *ngIf="formulario.controls.imagen.valid" class="text-success">Correcto</small>             
+                        </div>
+                    </div>
             <div class="form-group">               
                 <!-- <a  class="btn btn-success" (click)="nuevoColor()">Nuevo Color</a>
                 <button class="btn btn-danger" (click)="eliminarColor(x)">Eliminar color</button> -->
@@ -115,14 +123,7 @@
                         </div>
                     </div> -->
             </div>
-            <div class="form-group">
-                <div class="form-group">    
-                    <label for="imagen">Imagen</label>
-                    <input type="text" formControlName="imagen" class="form-control" name="imagen">
-                    <small *ngIf="formulario.controls.imagen.invalid " class="text-danger">Errores de validacion en imagen revise la extension de la ruta</small>
-                    <small *ngIf="formulario.controls.imagen.valid" class="text-success">Correcto</small>             
-                </div>
-            </div>
+            
             
           </div>
           
